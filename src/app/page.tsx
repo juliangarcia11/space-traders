@@ -19,20 +19,45 @@ export default function HomePage() {
           ESLint, Jest, Playwrite, and more.
         </p>
 
-        <div className="mx-auto">
-          <Link
+        <div className="flex flex-row gap-2 justify-center">
+          <PageLink
             href="/about"
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-black/10 p-4 hover:bg-black/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
+            title="About"
+            subtitle="Learn more about this template"
             data-testid="about-link"
-          >
-            <h3 className="text-2xl font-bold">About →</h3>
-            <div className="text-lg">
-              Learn more about the project, its contributors, and how to
-              contribute.
-            </div>
-          </Link>
+          />
+          <PageLink
+            href="/test"
+            title="Test"
+            subtitle="Test if we can fetch data from the SpaceTraders API"
+            data-testid="test-link"
+          />
         </div>
       </div>
     </main>
+  );
+}
+
+type PageLinkProps = {
+  href: string;
+  title: string;
+  subtitle: string;
+  'data-testid': string;
+};
+
+function PageLink(
+  {href, title, subtitle, 'data-testid': dataTestId}: PageLinkProps
+) {
+  return (
+    <Link
+      href={href}
+      className="flex max-w-xs flex-col gap-4 rounded-xl bg-black/10 p-4 hover:bg-black/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
+      data-testid={dataTestId ?? 'page-link'}
+    >
+      <h3 className="text-2xl font-bold">{title} →</h3>
+      <div className="text-lg">
+        {subtitle}
+      </div>
+    </Link>
   );
 }

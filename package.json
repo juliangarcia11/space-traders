@@ -1,5 +1,5 @@
 {
-  "name": "jg-whisper",
+  "name": "space-traders",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,8 @@
     "start": "next start",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:pw": "playwright test"
+    "test:pw": "playwright test",
+    "test:pw:ui": "playwright test --ui"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.10.1",
