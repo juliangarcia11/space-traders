@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PageLink } from "~/components/page-link";
 
 export default function HomePage() {
   return (
@@ -19,7 +19,7 @@ export default function HomePage() {
           ESLint, Jest, Playwrite, and more.
         </p>
 
-        <div className="flex flex-row gap-2 justify-center">
+        <div className="flex flex-row justify-center gap-2">
           <PageLink
             href="/about"
             title="About"
@@ -35,29 +35,5 @@ export default function HomePage() {
         </div>
       </div>
     </main>
-  );
-}
-
-type PageLinkProps = {
-  href: string;
-  title: string;
-  subtitle: string;
-  'data-testid': string;
-};
-
-function PageLink(
-  {href, title, subtitle, 'data-testid': dataTestId}: PageLinkProps
-) {
-  return (
-    <Link
-      href={href}
-      className="flex max-w-xs flex-col gap-4 rounded-xl bg-black/10 p-4 hover:bg-black/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
-      data-testid={dataTestId ?? 'page-link'}
-    >
-      <h3 className="text-2xl font-bold">{title} →</h3>
-      <div className="text-lg">
-        {subtitle}
-      </div>
-    </Link>
   );
 }

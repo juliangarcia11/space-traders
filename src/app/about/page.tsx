@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
-import { DarkModeToggle } from "~/app/_components/dark-mode-toggle";
+import { DarkModeToggle } from "~/components/dark-mode-toggle";
 
 export default function AboutPage() {
   return (
