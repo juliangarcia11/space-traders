@@ -1,4 +1,5 @@
 import { Card } from "primereact/card";
+import { getStatus } from "~/api/get-status";
 
 /**
  * Test Page
@@ -8,12 +9,7 @@ import { Card } from "primereact/card";
  * @constructor
  */
 export default async function TestPage() {
-  async function action() {
-    return fetch('https://api.spacetraders.io/v2/')
-      .then(response => response.json())
-      .catch(err => console.error(err));
-  }
-  const response = await action() as unknown;
+  const response = await getStatus();
 
   return (
     <Card
@@ -22,7 +18,7 @@ export default async function TestPage() {
           Test Page
         </h1>
       }
-      className={`m-4 p-4 overflow-auto h-96`}
+      className={`m-4 h-96 overflow-auto p-4`}
     >
       <pre data-testid="api-res" className="m-4">
         {JSON.stringify(response, null, 2)}
