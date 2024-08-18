@@ -11,7 +11,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:pw": "playwright test",
-    "test:pw:ui": "playwright test --ui"
+    "test:pw:ui": "playwright test --ui",
+    "test:pw:report": "playwright show-report"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.10.1",

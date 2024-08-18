@@ -7,6 +7,7 @@ import Tailwind from "primereact/passthrough/tailwind";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { ThemeProvider } from "~/providers/theme";
+import { PageHeader } from "~/components/page-header";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -19,10 +20,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="bg-slate-100 dark:bg-slate-800 dark:text-white">
+      <body className="overflow-none h-screen bg-slate-100 dark:bg-slate-800 dark:text-white">
         <ThemeProvider>
           <PrimeReactProvider value={{ unstyled: true, pt: Tailwind }}>
-            {children}
+            <PageHeader />
+            <main className="overflow-auto p-2" style={{ height: "90%" }}>
+              {children}
+            </main>
           </PrimeReactProvider>
         </ThemeProvider>
       </body>
