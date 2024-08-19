@@ -3,6 +3,7 @@ import { getStatus } from "~/api/get-status";
 import { Message } from "primereact/message";
 import { Tag } from "primereact/tag";
 import Link from "next/link";
+import { Leaderboards } from "~/app/_components/leaderboards";
 
 export default async function HomePage() {
   const response = await getStatus();
@@ -51,19 +52,26 @@ export default async function HomePage() {
           </Link>
         </p>
 
-        <div className="flex flex-row justify-center gap-2">
-          <PageLink
-            href="/about"
-            title="About"
-            subtitle="Learn more about this game and the SpaceTraders API"
-            data-testid="about-link"
+        <div className="flex flex-row justify-around gap-8">
+          <Leaderboards
+            data={response.success ? response.data.leaderboards : undefined}
+            data-testid="leaderboards"
           />
-          <PageLink
-            href="/test"
-            title="Test"
-            subtitle="Test if we can fetch data from the SpaceTraders API"
-            data-testid="test-link"
-          />
+
+          <div className="flex flex-col justify-center gap-2">
+            <PageLink
+              href="/about"
+              title="About"
+              subtitle="Learn more about this game and the SpaceTraders API"
+              data-testid="about-link"
+            />
+            <PageLink
+              href="/test"
+              title="Test"
+              subtitle="Test if we can fetch data from the SpaceTraders API"
+              data-testid="test-link"
+            />
+          </div>
         </div>
       </div>
     </main>

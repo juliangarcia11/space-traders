@@ -18,7 +18,8 @@ export default async function TestPage() {
           Test Page
         </h1>
       }
-      className={`m-4 h-96 overflow-auto p-4`}
+      className={`m-4 overflow-auto p-4`}
+      style={{ height: "95%" }}
     >
       <pre data-testid="api-res" className="m-4">
         {JSON.stringify(response, null, 2)}

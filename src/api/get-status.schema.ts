@@ -11,16 +11,19 @@ export const MostCredits = z.object({
   agentSymbol: z.string(),
   credits: z.number(),
 });
+export type TMostCredits = z.infer<typeof MostCredits>;
 
 export const MostSubmittedChart = z.object({
   agentSymbol: z.string(),
   chartCount: z.number(),
 });
+export type TMostSubmittedChart = z.infer<typeof MostSubmittedChart>;
 
 export const Leaderboards = z.object({
   mostCredits: z.array(MostCredits),
   mostSubmittedCharts: z.array(MostSubmittedChart),
 });
+export type TLeaderboards = z.infer<typeof Leaderboards>;
 
 export const ServerResets = z.object({
   next: z.string(),
