@@ -1,7 +1,7 @@
 "use server";
 
 import { GetStatusResponse } from "~/api/get-status.schema";
-import { notOkResponse } from "~/api/_utils";
+import { notOkResponse, okResponse } from "~/api/_utils";
 
 /**
  * Get the status of the SpaceTraders API by calling the root endpoint.
@@ -17,8 +17,5 @@ export async function getStatus() {
     );
   }
 
-  return {
-    success: true,
-    data: GetStatusResponse.parse(await response.json()),
-  } as const;
+  return okResponse(GetStatusResponse.parse(await response.json()));
 }
