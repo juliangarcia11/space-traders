@@ -3,8 +3,7 @@ import { getStatus } from "~/api";
 import { Message } from "primereact/message";
 import { Tag } from "primereact/tag";
 import Link from "next/link";
-import { Leaderboards } from "~/app/_components/leaderboards";
-import { Announcements } from "~/_components/announcements";
+import { Announcements, Leaderboards } from "~/app/_components";
 
 export default async function HomePage() {
   const response = await getStatus();
