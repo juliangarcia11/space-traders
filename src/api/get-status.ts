@@ -1,25 +1,24 @@
 "use server";
 
 import { GetStatusResponse } from "~/api/get-status.schema";
+import { notOkResponse } from "~/api/_utils";
 
+/**
+ * Get the status of the SpaceTraders API by calling the root endpoint.
+ */
 export async function getStatus() {
-  try {
-    const response = await fetch("https://api.spacetraders.io/v2/");
+  const response = await fetch("https://api.spacetraders.io/v2/");
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    return {
-      success: true,
-      data: GetStatusResponse.parse(await response.json()),
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      success: false,
-      message:
-        "An error occurred while fetching data from the SpaceTraders API",
-    };
+  if (!response.ok) {
+    return notOkResponse(
+      response,
+      "Unable to connect to the SpaceTraders at this time",
+      "getStatus",
+    );
   }
+
+  return {
+    success: true,
+    data: GetStatusResponse.parse(await response.json()),
+  } as const;
 }

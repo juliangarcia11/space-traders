@@ -1,8 +1,16 @@
 import { PageLink } from "~/components/page-link";
+import { getStatus } from "~/api/get-status";
+import { Message } from "primereact/message";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const response = await getStatus();
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
+      <Message
+        text={response.success ? response.data.status : response.error}
+        severity={response.success ? "success" : "error"}
+        data-testid="status"
+      />
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
         <h1
           className="text-5xl font-extrabold tracking-tight sm:text-[5rem]"
