@@ -34,6 +34,7 @@ export const Announcements = z.object({
   title: z.string(),
   body: z.string(),
 });
+export type TAnnouncements = z.infer<typeof Announcements>;
 
 export const GameLink = z.object({
   name: z.string(),

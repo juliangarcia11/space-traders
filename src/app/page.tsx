@@ -1,14 +1,15 @@
 import { PageLink } from "~/components/page-link";
-import { getStatus } from "~/api/get-status";
+import { getStatus } from "~/api";
 import { Message } from "primereact/message";
 import { Tag } from "primereact/tag";
 import Link from "next/link";
 import { Leaderboards } from "~/app/_components/leaderboards";
+import { Announcements } from "~/_components/announcements";
 
 export default async function HomePage() {
   const response = await getStatus();
   return (
-    <main className="flex flex-col items-center justify-center">
+    <main className="mb-16 flex flex-col items-center justify-center">
       <Message
         text={
           <span className="flex flex-row">
@@ -52,26 +53,27 @@ export default async function HomePage() {
           </Link>
         </p>
 
-        <div className="flex flex-row justify-around gap-8">
-          <Leaderboards
-            data={response.success ? response.data.leaderboards : undefined}
-            data-testid="leaderboards"
+        <Announcements
+          data={response.success ? response.data.announcements : undefined}
+          data-testid="announcements"
+        />
+        <Leaderboards
+          data={response.success ? response.data.leaderboards : undefined}
+          data-testid="leaderboards"
+        />
+        <div className="flex flex-row justify-center gap-2">
+          <PageLink
+            href="/about"
+            title="About"
+            subtitle="Learn more about this game and the SpaceTraders API"
+            data-testid="about-link"
           />
-
-          <div className="flex flex-col justify-center gap-2">
-            <PageLink
-              href="/about"
-              title="About"
-              subtitle="Learn more about this game and the SpaceTraders API"
-              data-testid="about-link"
-            />
-            <PageLink
-              href="/test"
-              title="Test"
-              subtitle="Test if we can fetch data from the SpaceTraders API"
-              data-testid="test-link"
-            />
-          </div>
+          <PageLink
+            href="/test"
+            title="Test"
+            subtitle="Test if we can fetch data from the SpaceTraders API"
+            data-testid="test-link"
+          />
         </div>
       </div>
     </main>

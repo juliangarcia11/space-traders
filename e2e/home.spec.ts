@@ -31,3 +31,13 @@ test("should display the most credits and most submitted charts leaderboards", a
     .textContent();
   expect(mostSubmittedCharts).toBeTruthy();
 });
+
+test("should display the latest announcements in a carousel", async ({
+  page,
+}) => {
+  await page.goto("http://localhost:3000");
+  const announcements = await page
+    .locator("data-testid=announcements")
+    .textContent();
+  expect(announcements).toBeTruthy();
+});

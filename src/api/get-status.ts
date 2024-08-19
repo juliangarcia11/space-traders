@@ -1,7 +1,6 @@
 "use server";
 
-import { GetStatusResponse } from "~/api/get-status.schema";
-import { notOkResponse, okResponse } from "~/api/_utils";
+import { notOkResponse, okResponse, GetStatusResponse } from "~/api";
 
 /**
  * Get the status of the SpaceTraders API by calling the root endpoint.
