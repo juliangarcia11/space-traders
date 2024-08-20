@@ -1,9 +1,9 @@
-import { PageLink } from "~/components/page-link";
-import { getStatus } from "~/api";
+import Link from "next/link";
 import { Message } from "primereact/message";
 import { Tag } from "primereact/tag";
-import Link from "next/link";
-import { Announcements, Leaderboards } from "~/app/_components";
+
+import { getStatus } from "~/api";
+import { Announcements, Leaderboards, PageLink } from "~/components";
 
 export default async function HomePage() {
   const response = await getStatus();

@@ -5,10 +5,20 @@ import { Column } from "primereact/column";
 import { Message } from "primereact/message";
 
 type LeaderboardsProps = {
+  /**
+   * Leaderboards data to display
+   * */
   data?: TLeaderboards;
-  "data-testid": string;
+  /**
+   * Optional test ID for the component.
+   */
+  "data-testid"?: string;
 };
 
+/**
+ * Leaderboards component.
+ * Displays two tables with the top agents by credits and submitted charts.
+ */
 export function Leaderboards({
   data,
   "data-testid": dataTestId,

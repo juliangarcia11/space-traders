@@ -1,9 +1,21 @@
 import Link from "next/link";
 
 type PageLinkProps = {
+  /**
+   * The URL to link to.
+   */
   href: string;
+  /**
+   * The title of the link.
+   */
   title: string;
+  /**
+   * The subtitle/description/summary of the link.
+   */
   subtitle: string;
+  /**
+   * Optional test ID for the component.
+   */
   "data-testid": string;
 };
 

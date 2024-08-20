@@ -4,10 +4,25 @@ import { useState } from "react";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 
-export function Announcements(props: {
+type AnnouncementsProps = {
+  /**
+   * Announcements data to display.
+   */
   data?: TAnnouncements[];
+  /**
+   * Optional test ID for the component.
+   */
   "data-testid"?: string;
-}) {
+};
+
+/**
+ * Announcements component.
+ * Displays a card with the current announcement and buttons to cycle through announcements.
+ */
+export function Announcements({
+  data,
+  "data-testid": dataTestId,
+}: AnnouncementsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // If there are announcements, display the current announcement as a Card with prev/next buttons
@@ -16,17 +31,17 @@ export function Announcements(props: {
   return (
     <div
       className="mx-16 flex flex-row items-center justify-center gap-4"
-      data-testid={props["data-testid"] ?? "announcements"}
+      data-testid={dataTestId ?? "announcements"}
     >
       <Button
         icon="pi pi-chevron-left -mx-2"
         onClick={() => setCurrentIndex(currentIndex - 1)}
-        disabled={!props.data?.length || currentIndex === 0}
+        disabled={!data?.length || currentIndex === 0}
       />
-      {props.data?.length && props.data[currentIndex] ? (
+      {data?.length && data[currentIndex] ? (
         <Card
-          title={"Announcement: " + props.data[currentIndex].title}
-          subTitle={props.data[currentIndex].body}
+          title={"Announcement: " + data[currentIndex].title}
+          subTitle={data[currentIndex].body}
           className="rounded-xl shadow-lg"
         />
       ) : (
@@ -35,9 +50,7 @@ export function Announcements(props: {
       <Button
         icon="pi pi-chevron-right -mx-2"
         onClick={() => setCurrentIndex(currentIndex + 1)}
-        disabled={
-          !props.data?.length || currentIndex === (props.data?.length ?? 0) - 1
-        }
+        disabled={!data?.length || currentIndex === (data?.length ?? 0) - 1}
       />
     </div>
   );
