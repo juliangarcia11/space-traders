@@ -40,7 +40,7 @@ export function Announcements({
       />
       {data?.length && data[currentIndex] ? (
         <Card
-          title={"Announcement: " + data[currentIndex].title}
+          title={data[currentIndex].title}
           subTitle={data[currentIndex].body}
           className="rounded-xl shadow-lg"
         />

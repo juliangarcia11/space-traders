@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { DarkModeToggle } from "./dark-mode-toggle";
+import { expect, userEvent, within } from "@storybook/test";
 
 const meta = {
   title: "Components/DarkModeToggle",
@@ -20,4 +21,17 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.findByTestId("theme-toggle");
+
+    await expect(button).toBeInTheDocument();
+
+    await expect(button.querySelector(".pi-moon")).toBeInTheDocument();
+
+    await userEvent.click(button);
+
+    await expect(button.querySelector(".pi-sun")).toBeInTheDocument();
+  },
+};

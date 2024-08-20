@@ -13,6 +13,8 @@
     "test:pw": "playwright test",
     "test:pw:ui": "playwright test --ui",
     "test:pw:report": "playwright show-report",
+    "test:storybook": "test-storybook",
+    "watch:storybook": "test-storybook --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -37,6 +39,7 @@
     "@storybook/nextjs": "^8.2.9",
     "@storybook/react": "^8.2.9",
     "@storybook/test": "^8.2.9",
+    "@storybook/test-runner": "^0.19.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.0",
