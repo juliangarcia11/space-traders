@@ -30,7 +30,7 @@ export function Announcements({
   // if there are no announcements, display a message that there are no announcements.
   return (
     <div
-      className="mx-16 flex flex-row items-center justify-center gap-4"
+      className="mx-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
       data-testid={dataTestId ?? "announcements"}
     >
       <Button

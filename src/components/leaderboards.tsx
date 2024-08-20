@@ -30,7 +30,7 @@ export function Leaderboards({
       data-testid={dataTestId}
       pt={{
         content: {
-          className: "flex flex-row gap-8",
+          className: "flex flex-col sm:flex-row gap-8",
         },
       }}
     >
