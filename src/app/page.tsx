@@ -3,8 +3,7 @@ import { Message } from "primereact/message";
 import { Tag } from "primereact/tag";
 
 import { getStatus } from "~/api";
-import { Announcements, Leaderboards, PageLink } from "~/components";
-import { Stats } from "~/components/stats";
+import { Announcements, Leaderboards, PageLink, Stats } from "~/components";
 
 /**
  * The Home Page displays the status of the SpaceTraders API, allows the user
