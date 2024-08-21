@@ -11,7 +11,7 @@ export type TNotOkResponse = {
  * @param fn - The function name that called this function (default: "fetch")
  */
 export function notOkResponse(
-  response: Response,
+  response: { status: number; statusText: string },
   clientMessage?: string,
   fn?: string,
 ): TNotOkResponse {

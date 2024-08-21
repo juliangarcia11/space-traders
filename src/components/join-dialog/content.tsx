@@ -52,7 +52,7 @@ export function JoinDialogContent(props: JoinDialogContentProps) {
           }
           options={["COSMIC", "TECH", "MAGIC", "NATURE", "MUTANT"]}
           placeholder="Select a Faction"
-          className="md:w-14rem w-full"
+          className="w-full"
           appendTo={props.isStory ? "self" : undefined}
         />
       </FormItem>

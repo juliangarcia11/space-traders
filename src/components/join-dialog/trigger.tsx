@@ -2,13 +2,15 @@
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { useState } from "react";
-import { JoinDialogContent } from "~/components/join-dialog/content";
+import { JoinDialogForm } from "./form";
 
 type JoinDialogTriggerProps = {
+  isStory?: boolean;
   disabled?: boolean;
 };
 
 export function JoinDialogTrigger({
+  isStory = false,
   disabled = false,
 }: JoinDialogTriggerProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,11 +33,12 @@ export function JoinDialogTrigger({
         }
         visible={isVisible}
         onHide={() => setIsVisible(false)}
-        data-testid="join-dialog"
         style={{ width: "fit-content" }}
         pt={{ headerTitle: { className: "px-4" } }}
+        data-testid="join-dialog"
+        appendTo={isStory ? "self" : undefined}
       >
-        <JoinDialogContent />
+        <JoinDialogForm />
       </Dialog>
     </>
   );
