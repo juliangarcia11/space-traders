@@ -16,7 +16,7 @@
     "test:storybook": "test-storybook",
     "watch:storybook": "test-storybook --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build public"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.10.1",
