@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Leaderboards } from "./leaderboards";
+import { expect, userEvent, within } from "@storybook/test";
 
 const meta = {
   title: "Components/Leaderboards",
@@ -10,6 +11,8 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+const dataTestId = "leaderboards";
 
 export const LeaderboardDefault: Story = {
   args: {
@@ -29,5 +32,18 @@ export const LeaderboardDefault: Story = {
         }))
         .sort((a, b) => b.chartCount - a.chartCount),
     },
+    "data-testid": dataTestId,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const leaderboardContainer = await canvas.findByTestId(dataTestId);
+
+    const mostCreditsTable = await canvas.findByTestId("most-credits");
+    await expect(mostCreditsTable).toBeInTheDocument();
+
+    const mostSubmittedChartsTable = await canvas.findByTestId(
+      "most-submitted-charts",
+    );
+    await expect(mostSubmittedChartsTable).toBeInTheDocument();
   },
 };
