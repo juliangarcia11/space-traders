@@ -1,31 +1,58 @@
-import Link from "next/link";
-import { Button } from "primereact/button";
 import { Card } from "primereact/card";
-import { DarkModeToggle } from "~/components/dark-mode-toggle";
+import { getStatus } from "~/api";
+import { Divider } from "primereact/divider";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const response = await getStatus();
+  const apiDescription = response.success
+    ? response.data.description
+    : "The SpaceTraders API is currently down. This app will not function properly until the API is back online :( Please check back later.";
+  const appDescription = `This is a UI companion application for the SpaceTraders API. I built this app to help me practice Next.js, TypeScript, and more. You can find the source code for this app on GitHub.`;
+
   return (
     <Card
-      className={`m-4 p-4`}
+      className="mx-4 my-1 p-4 text-center md:text-start"
       header={
-        <span className="flex flex-row justify-between">
-          <h1 className="m-4 text-4xl font-bold" data-testid="about-title">
-            About
-          </h1>
-          <DarkModeToggle />
-        </span>
-      }
-      footer={
-        <Link href="/" data-testid="home-link">
-          <Button label="Home" />
-        </Link>
+        <h1
+          className="mx-4 mt-2 text-6xl md:text-4xl"
+          data-testid="about-title"
+        >
+          About Space Traders
+          <Divider />
+        </h1>
       }
     >
-      <p className="m-4">
-        Primereact, Tailwind CSS, and a dark mode toggle have been added to the
-        project to demonstrate how to integrate third-party libraries and
-        components.
-      </p>
+      <InfoSection
+        title="The API:"
+        description={apiDescription}
+        data-testid="api-description"
+      />
+      <InfoSection
+        title="The App:"
+        description={appDescription}
+        data-testid="app-description"
+      />
     </Card>
+  );
+}
+
+interface InfoSectionProps {
+  title: string;
+  description: string;
+  "data-testid": string;
+}
+
+function InfoSection({
+  title,
+  description,
+  "data-testid": testId,
+}: InfoSectionProps) {
+  return (
+    <section className="flex flex-col justify-between md:mx-16 md:my-4 md:flex-row">
+      <h3 className="text-3xl font-semibold">{title}</h3>
+      <p data-testid={testId} className="text-wrap text-xl font-thin md:w-2/3">
+        {description}
+      </p>
+    </section>
   );
 }
