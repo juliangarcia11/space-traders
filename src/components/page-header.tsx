@@ -1,8 +1,9 @@
-import { Menubar } from "primereact/menubar";
-import { ROUTE_LIST } from "~/app/routes";
-import { DarkModeToggle } from "~/components/dark-mode-toggle";
 import Link from "next/link";
 import { Button } from "primereact/button";
+import { Menubar } from "primereact/menubar";
+
+import { ROUTE_LIST } from "~/app/routes";
+import { DarkModeToggle, JoinDialogTrigger } from "~/components";
 
 /**
  * A header for a page.
@@ -19,7 +20,12 @@ export function PageHeader() {
   return (
     <Menubar
       model={routes}
-      end={<DarkModeToggle />}
+      end={
+        <span className="flex flex-row gap-2">
+          <JoinDialogTrigger />
+          <DarkModeToggle />
+        </span>
+      }
       data-testid="page-header"
       className="rounded-none shadow-md"
       style={{ height: "10%" }}

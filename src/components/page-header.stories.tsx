@@ -19,5 +19,8 @@ export const Default: Story = {
     await expect(await canvas.findByText("Home")).toBeInTheDocument();
     await expect(await canvas.findByTestId("page-header")).toBeInTheDocument();
     await expect(await canvas.findByTestId("theme-toggle")).toBeInTheDocument();
+    await expect(
+      await canvas.findByTestId("join-dialog-trigger"),
+    ).toBeInTheDocument();
   },
 };
