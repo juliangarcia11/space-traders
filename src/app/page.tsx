@@ -4,6 +4,7 @@ import { Tag } from "primereact/tag";
 
 import { getStatus } from "~/api";
 import { Announcements, Leaderboards, PageLink } from "~/components";
+import { Stats } from "~/components/stats";
 
 /**
  * The Home Page displays the status of the SpaceTraders API, allows the user
@@ -56,14 +57,20 @@ export default async function HomePage() {
           </Link>
         </p>
 
-        <Announcements
-          data={response.success ? response.data.announcements : undefined}
-          data-testid="announcements"
-        />
-        <Leaderboards
-          data={response.success ? response.data.leaderboards : undefined}
-          data-testid="leaderboards"
-        />
+        {response.success && (
+          <>
+            <Stats stats={response.data.stats} />
+            <Announcements
+              data={response.data.announcements}
+              data-testid="announcements"
+            />
+            <Leaderboards
+              data={response.data.leaderboards}
+              data-testid="leaderboards"
+            />
+          </>
+        )}
+
         <div className="flex flex-col justify-center gap-2 sm:flex-row">
           <PageLink
             href="/about"

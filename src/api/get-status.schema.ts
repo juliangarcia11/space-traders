@@ -6,6 +6,7 @@ export const Stats = z.object({
   systems: z.number(),
   waypoints: z.number(),
 });
+export type TStats = z.infer<typeof Stats>;
 
 export const MostCredits = z.object({
   agentSymbol: z.string(),
