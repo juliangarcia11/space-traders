@@ -1,4 +1,4 @@
-import { getStatus, TGetStatusResponse, TStats } from "~/api";
+import { type TStats } from "~/api";
 
 export async function Stats(props: { stats: TStats }) {
   const stats = Object.entries(props.stats).map(([key, value]) => {

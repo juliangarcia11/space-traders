@@ -2,10 +2,9 @@
 
 import { useFormState } from "react-dom";
 import { Button } from "primereact/button";
+import { Message } from "primereact/message";
 import { JoinDialogContent } from "./content";
 import { postAgent } from "~/api";
-import { Message } from "primereact/message";
-import { useEffect } from "react";
 
 const initialState = {
   success: false,

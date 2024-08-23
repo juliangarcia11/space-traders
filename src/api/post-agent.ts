@@ -2,12 +2,12 @@
 import { notOkResponse, okResponse, badRequest, parseFormData } from "~/api";
 import { PostAgentRequest, PostAgentResponse } from "~/api";
 import { cookies } from "next/headers";
-import { type TApiError } from "~/api/_utils/api-error";
+import { type TApiError, type TResponse } from "~/api/";
 
 /**
  * Post the details of a new agent to the server
  */
-export async function postAgent(prevState: any, formData: FormData) {
+export async function postAgent(prevState: TResponse, formData: FormData) {
   const parsedFormData = PostAgentRequest.safeParse(parseFormData(formData));
 
   // Server-side validation of the form data before sending it to the SpaceTraders API

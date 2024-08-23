@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { PageLink } from "./page-link";
-import { expect, userEvent, within } from "@storybook/test";
+import { expect, within } from "@storybook/test";
 
 const meta = {
   title: "Components/PageLink",

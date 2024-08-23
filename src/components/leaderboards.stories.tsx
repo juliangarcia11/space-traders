@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Leaderboards } from "./leaderboards";
-import { expect, userEvent, within } from "@storybook/test";
+import { expect, within } from "@storybook/test";
 
 const meta = {
   title: "Components/Leaderboards",
@@ -36,7 +36,7 @@ export const LeaderboardDefault: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const leaderboardContainer = await canvas.findByTestId(dataTestId);
+    await canvas.findByTestId(dataTestId);
 
     const mostCreditsTable = await canvas.findByTestId("most-credits");
     await expect(mostCreditsTable).toBeInTheDocument();

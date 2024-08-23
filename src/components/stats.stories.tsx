@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, userEvent, within } from "@storybook/test";
+import { expect, within } from "@storybook/test";
 
 import { Stats } from "./stats";
 import { TestData } from "~/app/page.stories";
@@ -19,8 +19,7 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const statsContainer = await canvas.findByTestId("stats");
-
+    await canvas.findByTestId("stats");
     // test that all the stats are displayed
     for (const [key, value] of Object.entries(TestData.stats)) {
       const stat = await canvas.findByTestId(key);
