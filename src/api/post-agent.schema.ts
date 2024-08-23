@@ -17,9 +17,10 @@ export type TPostAgentRequest = z.infer<typeof PostAgentRequest>;
 export const PostAgentResponse = z.object({
   data: z.object({
     agent: Agent,
-    contract: Contract,
-    faction: Faction,
-    ship: Ship,
+    contract: Contract.deepPartial(),
+    faction: Faction.deepPartial(),
+    ship: Ship.deepPartial(),
     token: z.string(),
   }),
 });
+export type TPostAgentResponse = z.infer<typeof PostAgentResponse>;

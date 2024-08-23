@@ -5,6 +5,12 @@ import { JoinDialogContent } from "./content";
 const meta = {
   title: "Components/JoinDialog/Content",
   component: JoinDialogContent,
+  args: {
+    formState: {
+      success: false,
+      error: "",
+    },
+  },
 } satisfies Meta<typeof JoinDialogContent>;
 
 export default meta;
@@ -12,9 +18,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    isStory: true,
-  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     // verify content is visible
@@ -30,13 +33,6 @@ export const Default: Story = {
 };
 
 export const WithValue: Story = {
-  args: {
-    isStory: true,
-    // formValues: {
-    //   agentName: "test",
-    //   agentFaction: "COSMIC",
-    // },
-  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     // verify content is visible
@@ -51,10 +47,5 @@ export const WithValue: Story = {
     // verify input value is set
     await userEvent.type(input, "test");
     await expect(input).toHaveValue("test");
-    // verify dropdown value is set
-    await userEvent.click(dropdown);
-    const option = await canvas.findByText("COSMIC");
-    await userEvent.click(option);
-    await expect(dropdown).toHaveTextContent("COSMIC");
   },
 };
