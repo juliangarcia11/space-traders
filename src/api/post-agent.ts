@@ -1,5 +1,11 @@
 "use server";
-import { notOkResponse, okResponse, badRequest, parseFormData } from "~/api";
+import {
+  notOkResponse,
+  okResponse,
+  badRequest,
+  parseFormData,
+  api_urls,
+} from "~/api";
 import { PostAgentRequest, PostAgentResponse } from "~/api";
 import { cookies } from "next/headers";
 import { type TApiError, type TResponse } from "~/api/";
@@ -19,7 +25,7 @@ export async function postAgent(prevState: TResponse, formData: FormData) {
   }
 
   // Send the form data to the SpaceTraders API
-  const response = await fetch("https://api.spacetraders.io/v2/register", {
+  const response = await fetch(api_urls.register, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

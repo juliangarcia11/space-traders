@@ -3,7 +3,7 @@ import { expect, within } from "@storybook/test";
 
 import Page from "./page";
 import { http, HttpResponse } from "msw";
-import { type TGetStatusResponse } from "~/api";
+import { api_urls, type TGetStatusResponse } from "~/api";
 import { MultipleAnnouncements } from "~/components/announcements.stories";
 import { LeaderboardDefault } from "~/components/leaderboards.stories";
 
@@ -47,7 +47,7 @@ export const Default: Story = {
   parameters: {
     msw: {
       handlers: [
-        http.get("https://api.spacetraders.io/v2/", () => {
+        http.get(api_urls.get_status, () => {
           return HttpResponse.json(TestData); // 👈 Return the mocked data
         }),
       ],

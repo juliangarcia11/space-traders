@@ -2,7 +2,7 @@ import { JoinDialogForm } from "./form";
 import { type Meta, type StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
 import { http, HttpResponse } from "msw";
-import { type TPostAgentResponse } from "~/api";
+import { api_urls, type TPostAgentResponse } from "~/api";
 
 const meta: Meta<typeof JoinDialogForm> = {
   title: "Components/JoinDialog/Form",
@@ -18,9 +18,9 @@ export const JoinDialogFormStory: Story = {
   parameters: {
     msw: {
       handlers: [
-        http.post("https://api.spacetraders.io/v2/register", () => {
-          return HttpResponse.json(PostAgentResponse200);
-        }),
+        http.post(api_urls.register, () =>
+          HttpResponse.json(PostAgentResponse200),
+        ),
       ],
     },
   },
@@ -52,7 +52,7 @@ export const JoinDialogFormStoryFormError: Story = {
   parameters: {
     msw: {
       handlers: [
-        http.post("https://api.spacetraders.io/v2/register", () => {
+        http.post(api_urls.register, () => {
           return new Promise(() => {
             return;
           });
