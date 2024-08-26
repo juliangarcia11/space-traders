@@ -11,4 +11,12 @@ export const api_urls = {
   get_my_agent: `${API_BASE}my/agent`,
   get_agent: (agentSymbol: string) => `${API_BASE}agents/${agentSymbol}`,
   get_agents: `${API_BASE}agents`,
+  get_contracts: `${API_BASE}my/contracts`,
+  get_contract: (contractId: string) => `${API_BASE}my/contracts/${contractId}`,
+  accept_contract: (contractId: string) =>
+    `${API_BASE}my/contracts/${contractId}/accept`,
+  deliver_contract: (contractId: string) =>
+    `${API_BASE}my/contracts/${contractId}/deliver`,
+  fulfill_contract: (contractId: string) =>
+    `${API_BASE}my/contracts/${contractId}/fulfill`,
 };

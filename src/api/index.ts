@@ -2,6 +2,9 @@ export * from "./_base";
 export * from "./_utils";
 
 export * from "./_urls";
+
+export * from "./contracts/";
+
 export * from "./get-agent";
 export * from "./get-agent.schema";
 export * from "./get-agents";
