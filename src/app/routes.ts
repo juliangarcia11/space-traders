@@ -2,6 +2,7 @@ import type { MenuItem } from "primereact/menuitem";
 
 type RoutingItem = Omit<MenuItem, "data"> & {
   data: {
+    authRequired?: boolean;
     description: string;
   };
 };
@@ -23,6 +24,7 @@ export const ROUTES: Record<string, RoutingItem> = {
     icon: "pi pi-users",
     url: "/agents",
     data: {
+      authRequired: true,
       description: "View all the agents",
     },
   },

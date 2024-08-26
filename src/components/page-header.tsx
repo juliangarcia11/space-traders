@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { Button } from "primereact/button";
 import { Menubar } from "primereact/menubar";
 
+import { api_urls } from "~/api";
 import { ROUTE_LIST } from "~/app/routes";
 import { DarkModeToggle, JoinDialogTrigger } from "~/components";
 
@@ -10,7 +12,11 @@ import { DarkModeToggle, JoinDialogTrigger } from "~/components";
  * Used in the ./app/layout.
  */
 export function PageHeader() {
-  const routes = ROUTE_LIST.map((route) => {
+  const authorized = !!cookies().get(api_urls.cookie)?.value;
+  const routes = ROUTE_LIST.filter((r) => {
+    // If the route requires authorization, only show it if the user is authorized
+    return !r.data.authRequired || authorized;
+  }).map((route) => {
     return {
       ...route,
       template: <PageHeaderItem route={route} />,
@@ -22,7 +28,7 @@ export function PageHeader() {
       model={routes}
       end={
         <span className="flex flex-row gap-2">
-          <JoinDialogTrigger />
+          {!authorized && <JoinDialogTrigger />}
           <DarkModeToggle />
         </span>
       }

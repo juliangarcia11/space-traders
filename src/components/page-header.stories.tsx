@@ -12,7 +12,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const NotAuthorized: Story = {
+  name: "Default",
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -22,5 +23,6 @@ export const Default: Story = {
     await expect(
       await canvas.findByTestId("join-dialog-trigger"),
     ).toBeInTheDocument();
+    await expect(canvas.queryByText("Agents")).toBeNull();
   },
 };
