@@ -17,12 +17,18 @@ export const NotAuthorized: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await expect(await canvas.findByText("Home")).toBeInTheDocument();
+    // verify that the page header is rendered
     await expect(await canvas.findByTestId("page-header")).toBeInTheDocument();
+    // verify that the home and about links are rendered
+    await expect(await canvas.findByText("Home")).toBeInTheDocument();
+    await expect(await canvas.findByText("About")).toBeInTheDocument();
+    // verify that the dashboard and agents links are not rendered
+    await expect(canvas.queryByText("Dashboard")).toBeNull();
+    await expect(canvas.queryByText("Agents")).toBeNull();
+    // verify that the theme toggle and join dialog trigger are rendered
     await expect(await canvas.findByTestId("theme-toggle")).toBeInTheDocument();
     await expect(
       await canvas.findByTestId("join-dialog-trigger"),
     ).toBeInTheDocument();
-    await expect(canvas.queryByText("Agents")).toBeNull();
   },
 };

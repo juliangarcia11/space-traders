@@ -3,9 +3,7 @@ import { expect, within } from "@storybook/test";
 
 import Page from "./page";
 import { http, HttpResponse } from "msw";
-import { api_urls, type TGetStatusResponse } from "~/api";
-import { MultipleAnnouncements } from "~/components/announcements.stories";
-import { LeaderboardDefault } from "~/components/leaderboards.stories";
+import { api_urls, MockGetStatusResponse } from "~/api";
 
 const meta = {
   title: "Pages/Home Page",
@@ -17,59 +15,21 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// 👇 The mocked data that will be used in the story
-export const TestData: TGetStatusResponse = {
-  status: "Storybook Test Status",
-  version: "v0.Test",
-  resetDate: new Date().toLocaleDateString(),
-  description: "Storybook Test Description",
-  stats: {
-    agents: 1000,
-    ships: 69,
-    systems: 21,
-    waypoints: 225,
-  },
-  leaderboards: LeaderboardDefault.args?.data ?? {
-    mostCredits: [{ agentSymbol: "Storybook Test Agent", credits: 100 }],
-    mostSubmittedCharts: [
-      { agentSymbol: "Storybook Test Agent", chartCount: 1 },
-    ],
-  },
-  serverResets: {
-    next: new Date().toLocaleDateString(),
-    frequency: "Storybook Test Frequency",
-  },
-  announcements: MultipleAnnouncements.args?.data ?? [],
-  links: [], // TODO: Add links after implementing the component
-};
-
 export const Default: Story = {
   parameters: {
     msw: {
       handlers: [
         http.get(api_urls.get_status, () => {
-          return HttpResponse.json(TestData); // 👈 Return the mocked data
+          return HttpResponse.json(MockGetStatusResponse); // 👈 Return the mocked data
         }),
       ],
-      http: {
-        // 👇 Mock the response for the getAnnouncements request
-        get_announcements: {
-          status: 200,
-          body: MultipleAnnouncements.args?.data,
-        },
-        // 👇 Mock the response for the getLeaderboards request
-        get_leaderboards: {
-          status: 200,
-          body: LeaderboardDefault.args?.data,
-        },
-      },
     },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
     // test that all the stats are displayed
-    for (const [key, value] of Object.entries(TestData.stats)) {
+    for (const [key, value] of Object.entries(MockGetStatusResponse.stats)) {
       const stat = await canvas.findByTestId(key);
       await expect(stat).toBeInTheDocument();
       await expect(stat).toHaveTextContent(value.toString());

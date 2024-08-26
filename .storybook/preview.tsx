@@ -6,6 +6,8 @@ import Tailwind from "primereact/passthrough/tailwind";
 import { ThemeProvider } from "~/providers/theme";
 import { PrimeReactProvider } from "primereact/api";
 import { Suspense } from "react";
+import { http, HttpResponse } from "msw";
+import { api_urls, MockGetStatusResponse } from "~/api";
 
 /**
  * Initializes MSW
@@ -36,6 +38,13 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    msw: {
+      handlers: [
+        http.get(api_urls.get_status, () => {
+          return HttpResponse.json(MockGetStatusResponse); // 👈 Return the mocked data
+        }),
+      ],
     },
     nextjs: {
       appDirectory: true,

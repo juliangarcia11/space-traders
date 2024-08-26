@@ -4,6 +4,7 @@ type RoutingItem = Omit<MenuItem, "data"> & {
   data: {
     authRequired?: boolean;
     description: string;
+    hiddenWhenAuthenticated?: boolean;
   };
 };
 
@@ -17,6 +18,16 @@ export const ROUTES: Record<string, RoutingItem> = {
     url: "/",
     data: {
       description: "The main page",
+      hiddenWhenAuthenticated: true,
+    },
+  },
+  DASHBOARD: {
+    label: "Dashboard",
+    icon: "pi pi-chart-bar",
+    url: "/dashboard",
+    data: {
+      authRequired: true,
+      description: "View the dashboard",
     },
   },
   AGENTS: {
@@ -34,6 +45,7 @@ export const ROUTES: Record<string, RoutingItem> = {
     url: "/about",
     data: {
       description: "Learn more about this template",
+      hiddenWhenAuthenticated: true,
     },
   },
   TEST: {

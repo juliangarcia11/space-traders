@@ -15,7 +15,11 @@ export function PageHeader() {
   const authorized = !!cookies().get(api_urls.cookie)?.value;
   const routes = ROUTE_LIST.filter((r) => {
     // If the route requires authorization, only show it if the user is authorized
-    return !r.data.authRequired || authorized;
+    // If the route should be hidden when authenticated, only show it if the user is not authorized
+    return (
+      (!r.data.authRequired || authorized) &&
+      (!r.data.hiddenWhenAuthenticated || !authorized)
+    );
   }).map((route) => {
     return {
       ...route,
