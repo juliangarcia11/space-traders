@@ -4,11 +4,14 @@ import {
   okResponse,
   badRequest,
   parseFormData,
+  getStatus,
   api_urls,
+  PostAgentRequest,
+  PostAgentResponse,
+  type TApiError,
+  type TResponse,
 } from "~/api";
-import { PostAgentRequest, PostAgentResponse } from "~/api";
 import { cookies } from "next/headers";
-import { type TApiError, type TResponse } from "~/api/";
 
 /**
  * Post the details of a new agent to the server
@@ -52,9 +55,30 @@ export async function postAgent(prevState: TResponse, formData: FormData) {
   // unpack the response from the SpaceTraders API
   const data = parsedResponse.data.data;
   // set the AUTHORIZATION cookie to the token from the SpaceTraders API for future requests
-  cookies().set("AUTHORIZATION", data.token);
-  console.log("[AUTHORIZATION]", data.token);
+  const expires = await getExpires();
+  cookies().set(api_urls.cookie, data.token, { expires });
 
   // return the response to the client
   return okResponse(data);
+}
+
+/**
+ * Get the expiration date for the AUTHORIZATION cookie.
+ * Defaults to 3 weeks from the current date or the next server reset.
+ * That way if the request fails, the user can still play until the next reset.
+ * The API will then let the user know the server reset so they can register again.
+ */
+async function getExpires() {
+  // default expiration date for the AUTHORIZATION cookie is 3 weeks
+  let expires = new Date();
+  expires.setDate(expires.getDate() + 21);
+
+  // get the current status of the API to determine the next server reset
+  const status = await getStatus();
+  if (status.success) {
+    // `status.data.serverResets.next` will look like: '2024-09-01T16:00:00.000Z'
+    // and we need to convert it to look like: 'Wed, 21 Oct 2015 07:28:00 GMT'
+    expires = new Date(status.data.serverResets.next);
+  }
+  return expires;
 }

@@ -5,6 +5,10 @@ const API_BASE = "https://api.spacetraders.io/v2/";
  */
 export const api_urls = {
   base: API_BASE,
+  cookie: "st-api-token",
   get_status: API_BASE,
   register: `${API_BASE}register`,
+  get_my_agent: `${API_BASE}my/agent`,
+  get_agent: (agentSymbol: string) => `${API_BASE}agents/${agentSymbol}`,
+  get_agents: `${API_BASE}agents`,
 };

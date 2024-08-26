@@ -18,6 +18,14 @@ export const ROUTES: Record<string, RoutingItem> = {
       description: "The main page",
     },
   },
+  AGENTS: {
+    label: "Agents",
+    icon: "pi pi-users",
+    url: "/agents",
+    data: {
+      description: "View all the agents",
+    },
+  },
   ABOUT: {
     label: "About",
     icon: "pi pi-info",

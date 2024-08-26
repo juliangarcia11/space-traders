@@ -51,6 +51,18 @@ export const Default: Story = {
           return HttpResponse.json(TestData); // 👈 Return the mocked data
         }),
       ],
+      http: {
+        // 👇 Mock the response for the getAnnouncements request
+        get_announcements: {
+          status: 200,
+          body: MultipleAnnouncements.args?.data,
+        },
+        // 👇 Mock the response for the getLeaderboards request
+        get_leaderboards: {
+          status: 200,
+          body: LeaderboardDefault.args?.data,
+        },
+      },
     },
   },
   play: async ({ canvasElement }) => {

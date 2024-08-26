@@ -9,10 +9,12 @@ export const AgentSymbol = z
   .max(14);
 
 export const Agent = z.object({
-  accountId: z.string({
-    description:
-      "Account ID that is tied to this agent. Only included on your own agent.",
-  }),
+  accountId: z
+    .string({
+      description:
+        "Account ID that is tied to this agent. Only included on your own agent.",
+    })
+    .nullish(),
   symbol: AgentSymbol,
   headquarters: z.string({ message: "The headquarters of the agent." }).min(1),
   credits: z
@@ -29,3 +31,4 @@ export const Agent = z.object({
     .int()
     .min(0),
 });
+export type TAgent = z.infer<typeof Agent>;
