@@ -15,6 +15,7 @@ export const ContractTerms = z.object({
     }),
   ),
 });
+export type TContractTerms = z.infer<typeof ContractTerms>;
 
 export const Contract = z.object({
   id: z.string(),
@@ -26,3 +27,4 @@ export const Contract = z.object({
   expiration: z.string(),
   deadlineToAccept: z.string(),
 });
+export type TContract = z.infer<typeof Contract>;

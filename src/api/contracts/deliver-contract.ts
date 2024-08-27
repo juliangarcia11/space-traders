@@ -4,8 +4,8 @@ import {
   okResponse,
   parseFormData,
   requestOptions,
-  TApiError,
-  TResponse,
+  type TApiError,
+  type TResponse,
 } from "~/api/_utils";
 import {
   DeliverContractRequest,

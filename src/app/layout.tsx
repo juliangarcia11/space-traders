@@ -4,10 +4,16 @@ import { PrimeReactProvider } from "primereact/api";
 import "primeicons/primeicons.css";
 import Tailwind from "primereact/passthrough/tailwind";
 
-import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { ThemeProvider } from "~/providers/theme";
 import { PageHeader } from "~/components/page-header";
+
+import { Inter } from "next/font/google";
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "SpaceTraders UI",
@@ -19,7 +25,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html lang="en" className={inter.className}>
       <body className="overflow-none h-screen bg-slate-100 dark:bg-slate-800 dark:text-white">
         <ThemeProvider>
           <PrimeReactProvider value={{ unstyled: true, pt: Tailwind }}>

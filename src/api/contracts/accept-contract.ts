@@ -4,7 +4,7 @@ import {
   okResponse,
   requestOptions,
   notOkResponse,
-  TApiError,
+  type TApiError,
 } from "~/api/_utils";
 import { AcceptContractResponse } from "~/api/contracts/accept-contract.schema";
 import { api_urls } from "~/api/_urls";

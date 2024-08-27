@@ -1,13 +1,22 @@
+import { Suspense } from "react";
 import type { Preview } from "@storybook/react";
 import { initialize, mswLoader } from "msw-storybook-addon";
+
+import { http, HttpResponse } from "msw";
+import { api_urls, MockGetStatusResponse } from "~/api";
+
 import "../src/styles/globals.css";
 import "primeicons/primeicons.css";
 import Tailwind from "primereact/passthrough/tailwind";
 import { ThemeProvider } from "~/providers/theme";
 import { PrimeReactProvider } from "primereact/api";
-import { Suspense } from "react";
-import { http, HttpResponse } from "msw";
-import { api_urls, MockGetStatusResponse } from "~/api";
+
+import { Inter } from "next/font/google";
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 /**
  * Initializes MSW
@@ -22,7 +31,7 @@ const preview: Preview = {
       <ThemeProvider>
         <PrimeReactProvider value={{ unstyled: true, pt: Tailwind }}>
           <Suspense fallback="Loading...">
-            <div style={{ margin: "3em" }}>
+            <div className={`mx-auto w-fit ${inter.className}`}>
               {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
               <Story />
             </div>
