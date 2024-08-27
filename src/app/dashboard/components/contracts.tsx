@@ -5,13 +5,17 @@ import { ContractSummary } from "~/app/dashboard/components/contract-summary";
 export function Contracts({ contracts }: { contracts: TContract[] }) {
   return (
     <DashboardSection title="Contracts" dataTestId="contracts">
-      <ul>
-        {contracts.map((contract) => (
-          <li key={contract.id}>
-            <ContractSummary contract={contract} />
-          </li>
-        ))}
-      </ul>
+      {contracts.length > 0 ? (
+        <ul className="flex flex-col gap-2">
+          {contracts.map((contract) => (
+            <li key={contract.id}>
+              <ContractSummary contract={contract} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-lg font-light italic">No contracts found.</p>
+      )}
     </DashboardSection>
   );
 }

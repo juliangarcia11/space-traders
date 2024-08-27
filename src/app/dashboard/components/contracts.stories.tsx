@@ -1,7 +1,7 @@
 import { Contracts } from "~/app/dashboard/components/contracts";
 import { type Meta, type StoryObj } from "@storybook/react";
 import { PostAgentResponse200, type TContract } from "~/api";
-import { within } from "@storybook/test";
+import { within, expect } from "@storybook/test";
 
 const meta: Meta<typeof Contracts> = {
   title: "Pages/Dashboard Page/Contracts",
@@ -11,15 +11,40 @@ const meta: Meta<typeof Contracts> = {
 export default meta;
 type Story = StoryObj<typeof Contracts>;
 
+const defaultArgs = {
+  contracts: new Array(5).fill(PostAgentResponse200.data.contract).map(
+    (contract, index) =>
+      ({
+        ...contract,
+        id: `${index}`,
+        accepted: index % 2 === 0,
+        fulfilled: index % 4 === 0,
+      }) as TContract,
+  ),
+};
+
 export const ContractsStory: Story = {
   name: "Default",
+  args: defaultArgs,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Check if the contracts are rendered
+    const contracts = canvas.getAllByRole("listitem");
+    await expect(contracts).toHaveLength(defaultArgs.contracts.length);
+  },
+};
+
+export const NoContractsStory: Story = {
+  name: "No Contracts",
   args: {
-    contracts: [PostAgentResponse200.data.contract as TContract],
+    contracts: [],
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // TODO: more tests after adding more mini-features
-    await canvas.findByTestId("acceptance-status");
+    // Check if the no contracts message is rendered
+    const noContracts = canvas.getByText("No contracts found.");
+    await expect(noContracts).toBeInTheDocument();
   },
 };

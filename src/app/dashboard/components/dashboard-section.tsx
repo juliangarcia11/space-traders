@@ -20,9 +20,22 @@ export function DashboardSection({
 >) {
   return (
     <Card
-      header={<h2 className="p-4 text-2xl font-bold md:p-6">{title}</h2>}
+      header={
+        <h2 className="p-4 pb-0 text-2xl font-bold md:pl-6 md:pt-6">{title}</h2>
+      }
       data-testid={dataTestId}
       className="w-fit"
+      pt={{
+        header: {
+          className: "p-0",
+        },
+        content: {
+          className: "p-0",
+        },
+        body: {
+          className: "py-2 px-4",
+        },
+      }}
     >
       {children}
     </Card>

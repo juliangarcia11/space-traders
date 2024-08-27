@@ -63,7 +63,7 @@ export function AcceptanceStatus({
         value={label}
         icon={`pi ${icon}`}
         severity={severity}
-        className="acceptance-status h-fit"
+        className="acceptance-status ml-auto h-fit"
         data-testid="acceptance-status"
       />
     </>
