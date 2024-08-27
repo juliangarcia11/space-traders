@@ -1,5 +1,5 @@
 import { ContractTypeIcon } from "~/app/dashboard/components/contract-type-icon";
-import { Meta, StoryObj } from "@storybook/react";
+import { type Meta, type StoryObj } from "@storybook/react";
 import { within } from "@storybook/test";
 
 const meta: Meta<typeof ContractTypeIcon> = {
