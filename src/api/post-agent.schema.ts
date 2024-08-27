@@ -38,7 +38,7 @@ export const PostAgentResponse200: TPostAgentResponse = {
     contract: {
       id: "contract123",
       factionSymbol: "FACTION_SYMBOL",
-      type: "delivery",
+      type: "PROCUREMENT",
       terms: {
         deadline: "2024-12-31T23:59:59Z",
         payment: {

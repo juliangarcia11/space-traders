@@ -22,6 +22,7 @@ export const ContractSummaryStory: Story = {
     const canvas = within(canvasElement);
 
     // TODO: more tests after adding more mini-features
+    await canvas.findByTestId("contract-type-icon");
     await canvas.findByTestId("acceptance-status");
   },
 };

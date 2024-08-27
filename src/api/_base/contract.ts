@@ -17,10 +17,12 @@ export const ContractTerms = z.object({
 });
 export type TContractTerms = z.infer<typeof ContractTerms>;
 
+const ContractTypes = ["PROCUREMENT", "TRANSPORT", "SHUTTLE"] as const;
+
 export const Contract = z.object({
   id: z.string(),
   factionSymbol: z.string(),
-  type: z.string(),
+  type: z.enum(ContractTypes),
   terms: ContractTerms,
   accepted: z.boolean(),
   fulfilled: z.boolean(),
