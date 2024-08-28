@@ -27,18 +27,19 @@ export const Factions = z.enum(FACTIONS, {
 });
 export type TFactions = z.infer<typeof Factions>;
 
+export const FactionTrait = z.object({
+  symbol: z.string(),
+  name: z.string(),
+  description: z.string(),
+});
+export type TFactionTrait = z.infer<typeof FactionTrait>;
+
 export const Faction = z.object({
   symbol: Factions,
   name: z.string(),
   description: z.string(),
   headquarters: z.string(),
-  traits: z.array(
-    z.object({
-      symbol: z.string(),
-      name: z.string(),
-      description: z.string(),
-    }),
-  ),
+  traits: z.array(FactionTrait),
   isRecruiting: z.boolean(),
 });
 export type TFaction = z.infer<typeof Faction>;

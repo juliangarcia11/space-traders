@@ -6,7 +6,7 @@ import type { TFaction } from "~/api";
  */
 export function FactionTitle({ faction }: { faction: TFaction }) {
   return (
-    <div className="flex flex-row justify-between border-b-2 border-black/10 p-1 px-3">
+    <div className="flex flex-row justify-between gap-4 border-b-2 border-black/10 p-1 px-3 md:gap-8">
       <h3
         className="font-mono text-2xl font-bold tracking-wide dark:border-white/10"
         data-testid="faction-title"
