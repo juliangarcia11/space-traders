@@ -1,6 +1,6 @@
 import type { TFaction } from "~/api";
 import { FactionTitle } from "~/app/dashboard/components/faction-title";
-import { FactionTrait } from "~/app/dashboard/components/faction-trait";
+import { FactionTraits } from "~/app/dashboard/components/faction-trait";
 
 /**
  * Summary of a faction including headquarters, traits, and recruiting status.
@@ -9,13 +9,10 @@ import { FactionTrait } from "~/app/dashboard/components/faction-trait";
  */
 export function FactionSummary({ faction }: { faction: TFaction }) {
   return (
-    <div>
+    <div className="flex flex-col gap-2 md:max-w-lg md:gap-4">
       <FactionTitle faction={faction} />
-      <div className="mt-4 flex flex-row justify-center gap-1">
-        {faction.traits.map((t) => (
-          <FactionTrait trait={t} key={t.symbol} />
-        ))}
-      </div>
+      <p>{faction.description}</p>
+      <FactionTraits traits={faction.traits} />
     </div>
   );
 }

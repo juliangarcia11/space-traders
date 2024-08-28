@@ -1,28 +1,32 @@
-import { FactionTrait } from "~/app/dashboard/components/faction-trait";
+import { FactionTraits } from "~/app/dashboard/components/faction-trait";
 import { type Meta, type StoryObj } from "@storybook/react";
 import { PostAgentResponse200 } from "~/api";
-import { within } from "@storybook/test";
+import { within, expect } from "@storybook/test";
 
-const meta: Meta<typeof FactionTrait> = {
-  title: "Pages/Dashboard Page/Faction Trait",
-  component: FactionTrait,
+const meta: Meta<typeof FactionTraits> = {
+  title: "Pages/Dashboard Page/Faction Traits",
+  component: FactionTraits,
 };
 
 export default meta;
-type Story = StoryObj<typeof FactionTrait>;
+type Story = StoryObj<typeof FactionTraits>;
 
-export const FactionTraitStory: Story = {
+export const FactionTraitsStory: Story = {
   name: "Default",
   args: {
-    trait: PostAgentResponse200.data.faction.traits[0],
+    traits: PostAgentResponse200.data.faction.traits,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    // find the button
-    await canvas.findByTestId("faction-trait");
-    // find the button label
-    await canvas.findByText(
-      PostAgentResponse200.data.faction.traits[0]!.symbol,
+    const traitTags = canvas.getAllByTestId("faction-trait");
+    await expect(traitTags).toHaveLength(
+      PostAgentResponse200.data.faction.traits.length,
     );
+    for (const tag of traitTags) {
+      const i = traitTags.indexOf(tag);
+      await expect(tag).toHaveTextContent(
+        PostAgentResponse200.data.faction.traits[i]!.symbol,
+      );
+    }
   },
 };

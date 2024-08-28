@@ -1,6 +1,16 @@
 import { Tooltip } from "primereact/tooltip";
 import { Tag } from "primereact/tag";
-import { type TFactionTrait } from "~/api";
+import { type TFaction, type TFactionTrait } from "~/api";
+
+export function FactionTraits({ traits }: { traits: TFaction["traits"] }) {
+  return (
+    <div className="flex flex-row gap-1">
+      {traits.map((t) => (
+        <FactionTrait trait={t} key={t.symbol} />
+      ))}
+    </div>
+  );
+}
 
 export function FactionTrait({ trait }: { trait: TFactionTrait }) {
   return (
