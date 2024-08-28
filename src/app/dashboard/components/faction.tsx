@@ -29,7 +29,7 @@ export function Faction({ faction }: { faction: TFaction }) {
         type="button"
         data-testid="faction"
       />
-      <OverlayPanel ref={op}>
+      <OverlayPanel ref={op} className="before:hidden">
         <FactionSummary faction={faction} />
       </OverlayPanel>
     </>
