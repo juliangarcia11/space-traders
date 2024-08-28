@@ -77,12 +77,6 @@ export default async function HomePage() {
             subtitle="Learn more about this game and the SpaceTraders API"
             data-testid="about-link"
           />
-          <PageLink
-            href="/test"
-            title="Test"
-            subtitle="Test if we can fetch data from the SpaceTraders API"
-            data-testid="test-link"
-          />
         </div>
       </div>
     </main>

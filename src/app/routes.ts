@@ -57,14 +57,6 @@ export const ROUTES: Record<string, RoutingItem> = {
       hiddenWhenAuthenticated: true,
     },
   },
-  TEST: {
-    label: "Test",
-    icon: "pi pi-search",
-    url: "/test",
-    data: {
-      description: "Test if we can fetch data from the SpaceTraders API",
-    },
-  },
 };
 
 export const ROUTE_LIST = Object.values(ROUTES);

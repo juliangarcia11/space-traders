@@ -1,5 +1,5 @@
 import { FactionWaypointLink } from "~/app/dashboard/components/faction-waypoint-link";
-import { Meta, StoryObj } from "@storybook/react";
+import { type Meta, type StoryObj } from "@storybook/react";
 
 import { within, expect } from "@storybook/test";
 
