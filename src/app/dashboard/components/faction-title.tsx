@@ -1,16 +1,28 @@
+import { Tag } from "primereact/tag";
 import type { TFaction } from "~/api";
 
 /**
- * Title of a faction styled with a border and symbol.
+ * Faction name, symbol, and recruiting status.
  */
 export function FactionTitle({ faction }: { faction: TFaction }) {
   return (
-    <h3
-      className="border-b-2 border-black/10 px-3 pt-1 font-mono text-2xl font-bold tracking-wide dark:border-white/10"
-      data-testid="faction-title"
-    >
-      {faction.name}
-      <span className="text-sm font-thin text-gray-500"> {faction.symbol}</span>
-    </h3>
+    <div className="flex flex-row justify-between border-b-2 border-black/10 p-1 px-3">
+      <h3
+        className="font-mono text-2xl font-bold tracking-wide dark:border-white/10"
+        data-testid="faction-title"
+      >
+        {faction.name}
+        <span className="text-sm font-thin text-gray-500">
+          {" "}
+          {faction.symbol}
+        </span>
+      </h3>
+      <Tag
+        severity={faction.isRecruiting ? "success" : "info"}
+        data-testid="recruiting-status"
+      >
+        {faction.isRecruiting ? "RECRUITING" : "CLOSED"}
+      </Tag>
+    </div>
   );
 }

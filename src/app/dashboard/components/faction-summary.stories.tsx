@@ -16,3 +16,10 @@ export const FactionSummaryStory: Story = {
     faction: PostAgentResponse200.data.faction,
   },
 };
+
+export const FactionSummaryClosedStory: Story = {
+  name: "Closed",
+  args: {
+    faction: { ...PostAgentResponse200.data.faction, isRecruiting: false },
+  },
+};
