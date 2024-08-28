@@ -58,6 +58,13 @@ const preview: Preview = {
     nextjs: {
       appDirectory: true,
     },
+    options: {
+      storySort: {
+        method: "alphabetical",
+        order: ["Pages", "*"],
+        locales: "",
+      },
+    },
   },
   //👇 Enables auto-generated documentation for all stories
   tags: ["autodocs"],
