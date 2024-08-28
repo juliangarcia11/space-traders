@@ -41,3 +41,4 @@ export const Faction = z.object({
   ),
   isRecruiting: z.boolean(),
 });
+export type TFaction = z.infer<typeof Faction>;

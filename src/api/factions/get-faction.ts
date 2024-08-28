@@ -1,6 +1,6 @@
 "use server";
 
-import { api_urls, notOkResponse, requestOptions, TApiError } from "~/api";
+import { api_urls, notOkResponse, requestOptions, type TApiError } from "~/api";
 import { GetFactionResponse } from "~/api/factions/get-faction.schema";
 
 export async function getFaction(factionId: string) {

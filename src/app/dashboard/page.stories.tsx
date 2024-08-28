@@ -18,13 +18,13 @@ export const DashboardPageStory: Story = {
 
     // find the contracts section
     await canvas.findByTestId("contracts");
-    // find the faction section
-    await canvas.findByTestId("faction");
+    // find the agent summary section
+    await canvas.findByTestId("agent-summary");
     // TODO: enable after implementing the features
+    // // find the faction section
+    // await canvas.findByTestId("faction");
     // // find the ships section
     // await canvas.findByTestId("ships");
-    // // find the agent summary section
-    // await canvas.findByTestId("agent-summary");
     // // find the current location section
     // await canvas.findByTestId("current-location");
   },
