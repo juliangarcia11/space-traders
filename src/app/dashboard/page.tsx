@@ -13,7 +13,7 @@ export default function DashboardPage() {
   const contract = response.data.contract as TContract;
   const faction = response.data.faction;
   return (
-    <div className="my-4">
+    <div className="my-4 grid grid-cols-2 justify-items-center gap-4">
       {/*<pre>{JSON.stringify(faction, null, 2)}</pre>*/}
       <Contracts contracts={[contract]} />
       <AgentSummary agent={agent} faction={faction} />

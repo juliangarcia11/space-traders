@@ -39,6 +39,15 @@ export const ROUTES: Record<string, RoutingItem> = {
       description: "View all the agents",
     },
   },
+  WAYPOINTS: {
+    label: "Waypoints",
+    icon: "pi pi-map",
+    url: "/waypoints",
+    data: {
+      authRequired: true,
+      description: "Look at the universe",
+    },
+  },
   ABOUT: {
     label: "About",
     icon: "pi pi-info",
