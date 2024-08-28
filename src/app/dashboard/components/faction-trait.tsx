@@ -17,9 +17,10 @@ export function FactionTrait({ trait }: { trait: TFactionTrait }) {
     <>
       <Tooltip
         content={trait.description}
+        position={"top"}
         target={`.faction-trait-avatar-${trait.symbol}`}
         data-testid="faction-trait-tooltip"
-        className="shadow-none"
+        className="max-w-sm shadow-none md:max-w-xs"
       />
       <Tag
         className={`faction-trait-avatar-${trait.symbol} flex items-center border-none`}
