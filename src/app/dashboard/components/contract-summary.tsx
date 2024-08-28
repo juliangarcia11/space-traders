@@ -1,5 +1,5 @@
 import { type TContract } from "~/api";
-import { AcceptanceStatus } from "~/app/dashboard/components/acceptance-status";
+import { ContractAcceptanceStatus } from "~/app/dashboard/components/contract-acceptance-status";
 import { ContractTypeIcon } from "~/app/dashboard/components/contract-type-icon";
 import { ContractTitle } from "~/app/dashboard/components/contract-title";
 import { calculateAcceptance } from "~/app/dashboard/utils/calculate-acceptance";
@@ -29,7 +29,7 @@ export function ContractSummary({ contract }: { contract: TContract }) {
     >
       <ContractTypeIcon type={contract.type} />
       <ContractTitle {...contract} />
-      <AcceptanceStatus {...contract} />
+      <ContractAcceptanceStatus {...contract} />
     </div>
   );
 }

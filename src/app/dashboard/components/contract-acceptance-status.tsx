@@ -3,17 +3,17 @@ import { Tag } from "primereact/tag";
 import { Tooltip } from "primereact/tooltip";
 import { calculateAcceptance } from "~/app/dashboard/utils/calculate-acceptance";
 
-type AcceptanceStatusProps = Pick<
+type ContractAcceptanceStatusProps = Pick<
   TContract,
   "accepted" | "fulfilled" | "expiration" | "deadlineToAccept"
 >;
 
-export function AcceptanceStatus({
+export function ContractAcceptanceStatus({
   accepted,
   fulfilled,
   expiration,
   deadlineToAccept,
-}: AcceptanceStatusProps) {
+}: ContractAcceptanceStatusProps) {
   const isExpired = new Date(expiration) < new Date();
 
   const label = calculateAcceptance({

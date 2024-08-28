@@ -1,14 +1,14 @@
-import { AcceptanceStatus } from "~/app/dashboard/components/acceptance-status";
+import { ContractAcceptanceStatus } from "~/app/dashboard/components/contract-acceptance-status";
 import { type Meta, type StoryObj } from "@storybook/react";
 import { within } from "@storybook/test";
 
-const meta: Meta<typeof AcceptanceStatus> = {
-  title: "Pages/Dashboard Page/AcceptanceStatus",
-  component: AcceptanceStatus,
+const meta: Meta<typeof ContractAcceptanceStatus> = {
+  title: "Pages/Dashboard Page/Contract Acceptance Status",
+  component: ContractAcceptanceStatus,
 };
 
 export default meta;
-type Story = StoryObj<typeof AcceptanceStatus>;
+type Story = StoryObj<typeof ContractAcceptanceStatus>;
 
 const defaultArgs = {
   accepted: false,
