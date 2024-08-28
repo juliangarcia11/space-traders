@@ -19,4 +19,6 @@ export const api_urls = {
     `${API_BASE}my/contracts/${contractId}/deliver`,
   fulfill_contract: (contractId: string) =>
     `${API_BASE}my/contracts/${contractId}/fulfill`,
+  get_faction: (factionId: string) => `${API_BASE}factions/${factionId}`,
+  get_factions: `${API_BASE}factions`,
 };

@@ -4,6 +4,7 @@ export * from "./_utils";
 export * from "./_urls";
 
 export * from "./contracts/";
+export * from "./factions/";
 
 export * from "./get-agent";
 export * from "./get-agent.schema";
