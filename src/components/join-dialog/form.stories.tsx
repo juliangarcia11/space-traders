@@ -2,7 +2,7 @@ import { JoinDialogForm } from "./form";
 import { type Meta, type StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
 import { http, HttpResponse } from "msw";
-import { api_urls, PostAgentResponse200 } from "~/api";
+import { api_urls, MockPostAgentResponse } from "~/api";
 
 const meta: Meta<typeof JoinDialogForm> = {
   title: "Components/JoinDialog/Form",
@@ -19,7 +19,7 @@ export const JoinDialogFormStory: Story = {
     msw: {
       handlers: [
         http.post(api_urls.register, () =>
-          HttpResponse.json(PostAgentResponse200),
+          HttpResponse.json(MockPostAgentResponse),
         ),
       ],
     },

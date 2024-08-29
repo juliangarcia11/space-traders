@@ -1,6 +1,6 @@
 import { Contracts } from "~/app/dashboard/components/contracts";
 import { type Meta, type StoryObj } from "@storybook/react";
-import { PostAgentResponse200, type TContract } from "~/api";
+import { MockPostAgentResponse, type TContract } from "~/api";
 import { within, expect } from "@storybook/test";
 
 const meta: Meta<typeof Contracts> = {
@@ -12,7 +12,7 @@ export default meta;
 type Story = StoryObj<typeof Contracts>;
 
 const defaultArgs = {
-  contracts: new Array(5).fill(PostAgentResponse200.data.contract).map(
+  contracts: new Array(5).fill(MockPostAgentResponse.data.contract).map(
     (contract, index) =>
       ({
         ...contract,

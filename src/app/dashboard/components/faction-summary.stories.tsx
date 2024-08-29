@@ -1,6 +1,6 @@
 import { FactionSummary } from "~/app/dashboard/components/faction-summary";
 import { type Meta, type StoryObj } from "@storybook/react";
-import { PostAgentResponse200 } from "~/api";
+import { MockPostAgentResponse } from "~/api";
 import { within, expect } from "@storybook/test";
 
 const meta: Meta<typeof FactionSummary> = {
@@ -14,21 +14,21 @@ type Story = StoryObj<typeof FactionSummary>;
 export const FactionSummaryStory: Story = {
   name: "Default",
   args: {
-    faction: PostAgentResponse200.data.faction,
+    faction: MockPostAgentResponse.data.faction,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(
-      canvas.getByText(PostAgentResponse200.data.faction.name),
+      canvas.getByText(MockPostAgentResponse.data.faction.name),
     ).toBeVisible();
     await expect(canvas.getByText("RECRUITING")).toBeVisible();
     await expect(
-      canvas.getByText(PostAgentResponse200.data.faction.description),
+      canvas.getByText(MockPostAgentResponse.data.faction.description),
     ).toBeVisible();
     await expect(canvas.getAllByTestId("faction-trait")).toBeTruthy();
     await expect(
       canvas.getByTestId(
-        `waypoint-link-${PostAgentResponse200.data.faction.headquarters}`,
+        `waypoint-link-${MockPostAgentResponse.data.faction.headquarters}`,
       ),
     ).toBeVisible();
   },
@@ -37,21 +37,21 @@ export const FactionSummaryStory: Story = {
 export const FactionSummaryClosedStory: Story = {
   name: "Closed",
   args: {
-    faction: { ...PostAgentResponse200.data.faction, isRecruiting: false },
+    faction: { ...MockPostAgentResponse.data.faction, isRecruiting: false },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(
-      canvas.getByText(PostAgentResponse200.data.faction.name),
+      canvas.getByText(MockPostAgentResponse.data.faction.name),
     ).toBeVisible();
     await expect(canvas.getByText("CLOSED")).toBeVisible();
     await expect(
-      canvas.getByText(PostAgentResponse200.data.faction.description),
+      canvas.getByText(MockPostAgentResponse.data.faction.description),
     ).toBeVisible();
     await expect(canvas.getAllByTestId("faction-trait")).toBeTruthy();
     await expect(
       canvas.getByTestId(
-        `waypoint-link-${PostAgentResponse200.data.faction.headquarters}`,
+        `waypoint-link-${MockPostAgentResponse.data.faction.headquarters}`,
       ),
     ).toBeVisible();
   },

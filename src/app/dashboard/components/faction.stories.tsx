@@ -1,6 +1,6 @@
 import { Faction } from "~/app/dashboard/components/faction";
 import { type Meta, type StoryObj } from "@storybook/react";
-import { PostAgentResponse200 } from "~/api";
+import { MockPostAgentResponse } from "~/api";
 import { userEvent, within } from "@storybook/test";
 
 const meta: Meta<typeof Faction> = {
@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Faction>;
 export const AgentSummaryFactionStory: Story = {
   name: "Default",
   args: {
-    faction: PostAgentResponse200.data.faction,
+    faction: MockPostAgentResponse.data.faction,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

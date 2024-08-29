@@ -2,8 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { expect, within } from "@storybook/test";
 
 import Page from "./page";
-import { http, HttpResponse } from "msw";
-import { api_urls, MockGetStatusResponse } from "~/api";
+import { MockGetStatusResponse } from "~/api";
 
 const meta = {
   title: "Pages/Home Page",
@@ -16,15 +15,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  parameters: {
-    msw: {
-      handlers: [
-        http.get(api_urls.get_status, () => {
-          return HttpResponse.json(MockGetStatusResponse); // 👈 Return the mocked data
-        }),
-      ],
-    },
-  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 

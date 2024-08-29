@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import type { Preview } from "@storybook/react";
 import { initialize, mswLoader } from "msw-storybook-addon";
+import { cookies } from "@storybook/nextjs/headers.mock";
 
-import { http, HttpResponse } from "msw";
-import { api_urls, MockGetStatusResponse } from "~/api";
+import { api_urls } from "~/api";
+import { mswHandlers } from "./msw-handlers";
 
 import "../src/styles/globals.css";
 import "primeicons/primeicons.css";
@@ -41,6 +42,10 @@ const preview: Preview = {
     ),
   ],
   loaders: [mswLoader], // 👈 Add the MSW loader to all stories
+  async beforeEach() {
+    // 👇 Set mock cookies and headers ahead of rendering
+    cookies().set(api_urls.cookie, "mock-cookie");
+  },
   parameters: {
     controls: {
       matchers: {
@@ -49,11 +54,7 @@ const preview: Preview = {
       },
     },
     msw: {
-      handlers: [
-        http.get(api_urls.get_status, () => {
-          return HttpResponse.json(MockGetStatusResponse); // 👈 Return the mocked data
-        }),
-      ],
+      handlers: mswHandlers, // 👈 mock api calls
     },
     nextjs: {
       appDirectory: true,

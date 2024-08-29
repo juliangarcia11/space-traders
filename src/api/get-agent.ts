@@ -12,9 +12,10 @@ import { GetAgentResponse } from "~/api/get-agent.schema";
  * Get an agent by their username (Agent.symbol) or the current agent if no username is provided
  */
 export async function getAgent(agentSymbol = "") {
-  const url = agentSymbol
-    ? api_urls.get_agent(agentSymbol)
-    : api_urls.get_my_agent;
+  const url =
+    agentSymbol.length > 0
+      ? api_urls.get_agent(agentSymbol)
+      : api_urls.get_my_agent;
 
   const response = await fetch(url, await requestOptions());
 

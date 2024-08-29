@@ -25,7 +25,7 @@ export const PostAgentResponse = z.object({
 });
 export type TPostAgentResponse = z.infer<typeof PostAgentResponse>;
 
-export const PostAgentResponse200: TPostAgentResponse = {
+export const MockPostAgentResponse: TPostAgentResponse = {
   data: {
     agent: {
       accountId: "agent123",

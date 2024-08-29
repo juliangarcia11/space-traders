@@ -18,7 +18,7 @@ export async function getFaction(factionId: string) {
   // Check if the response from the SpaceTraders API is ok
   if (!response.ok) {
     const json = (await response.json()) as TApiError;
-    return notOkResponse(response, json.error.message, "getAgent");
+    return notOkResponse(response, json.error.message, "getFaction");
   }
 
   // Parse the response from the SpaceTraders API to get proper typings

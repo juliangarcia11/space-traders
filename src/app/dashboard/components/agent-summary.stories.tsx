@@ -1,6 +1,6 @@
 import { AgentSummary } from "~/app/dashboard/components/agent-summary";
 import { type Meta, type StoryObj } from "@storybook/react";
-import { PostAgentResponse200 } from "~/api";
+import { MockPostAgentResponse } from "~/api";
 import { within } from "@storybook/test";
 
 const meta: Meta<typeof AgentSummary> = {
@@ -14,8 +14,8 @@ type Story = StoryObj<typeof AgentSummary>;
 export const AgentSummaryStory: Story = {
   name: "Default",
   args: {
-    agent: PostAgentResponse200.data.agent,
-    faction: PostAgentResponse200.data.faction,
+    agent: MockPostAgentResponse.data.agent,
+    faction: MockPostAgentResponse.data.faction,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

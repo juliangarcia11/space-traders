@@ -1,6 +1,6 @@
 import { ContractSummary } from "~/app/dashboard/components/contract-summary";
 import { type Meta, type StoryObj } from "@storybook/react";
-import { PostAgentResponse200, type TContract } from "~/api";
+import { MockPostAgentResponse, type TContract } from "~/api";
 import { within } from "@storybook/test";
 
 const meta: Meta<typeof ContractSummary> = {
@@ -12,7 +12,7 @@ export default meta;
 type Story = StoryObj<typeof ContractSummary>;
 
 const defaultArgs = {
-  contract: PostAgentResponse200.data.contract as TContract,
+  contract: MockPostAgentResponse.data.contract as TContract,
 };
 
 export const ContractSummaryStory: Story = {

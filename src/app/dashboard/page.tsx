@@ -2,29 +2,30 @@ import {
   getAgent,
   getContracts,
   getFaction,
-  PostAgentResponse200,
+  MockPostAgentResponse,
   type TPostAgentResponse,
 } from "~/api";
 
 import { Contracts } from "~/app/dashboard/components/contracts";
 import { AgentSummary } from "~/app/dashboard/components/agent-summary";
 import { Ships } from "~/app/dashboard/components/ships";
-import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
-  const response = PostAgentResponse200 as Required<TPostAgentResponse>;
+  const response = MockPostAgentResponse as Required<TPostAgentResponse>;
 
   const agent = await getAgent();
-
   if (!agent.success) {
-    redirect("/");
+    throw new Error(agent.error);
   }
 
   const contracts = await getContracts();
-  const faction = await getFaction(agent.data.startingFaction);
+  if (!contracts.success) {
+    throw new Error(contracts.error);
+  }
 
-  if (!contracts.success || !faction.success) {
-    redirect("/");
+  const faction = await getFaction(agent.data.startingFaction);
+  if (!faction.success) {
+    throw new Error(faction.error);
   }
 
   return (
