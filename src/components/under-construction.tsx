@@ -1,5 +1,5 @@
-import { Card } from "primereact/card";
 import { Divider } from "primereact/divider";
+import { Card } from "primereact/card";
 
 export function UnderConstruction({
   title,
@@ -9,21 +9,11 @@ export function UnderConstruction({
   message?: string;
 }) {
   return (
-    <Card
-      header={
-        <>
-          <h1 className="text-center text-4xl font-bold">
-            {title ?? "Under Construction"}
-          </h1>
-          <Divider />
-        </>
-      }
-      className="mx-auto w-fit border-2 border-orange-300 bg-orange-50 p-8"
-    >
-      <p className="justify-content-center flex flex-col text-lg">
-        <i className="pi pi-exclamation-triangle text-center text-4xl" />
-        {message ?? "This area is currently under construction."}
-      </p>
+    <Card className="h-fit w-fit border-2 border-orange-300 bg-orange-300/10 text-center shadow-lg dark:border-orange-800 dark:bg-orange-500/10">
+      <h4 className="text-xl font-semibold">{title ?? "Under Construction"}</h4>
+      <Divider className="before:border-orange-300 dark:before:border-orange-800" />
+      <span className="text-4xl">🚧</span>
+      <p className="p-4">{message ?? "This feature is under construction."}</p>
     </Card>
   );
 }
