@@ -1,6 +1,12 @@
 "use server";
 
-import { api_urls, notOkResponse, requestOptions, type TApiError } from "~/api";
+import {
+  api_urls,
+  notOkResponse,
+  okResponse,
+  requestOptions,
+  type TApiError,
+} from "~/api";
 import { GetFactionResponse } from "~/api/factions/get-faction.schema";
 
 export async function getFaction(factionId: string) {
@@ -27,5 +33,5 @@ export async function getFaction(factionId: string) {
   }
 
   // unpack the response from the SpaceTraders API and return it to the client
-  return parsedResponse.data.data;
+  return okResponse(parsedResponse.data.data);
 }

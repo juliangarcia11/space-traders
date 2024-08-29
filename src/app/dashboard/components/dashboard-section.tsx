@@ -24,7 +24,6 @@ export function DashboardSection({
         <h2 className="p-4 pb-0 text-2xl font-bold md:pl-6 md:pt-6">{title}</h2>
       }
       data-testid={dataTestId}
-      className="w-fit"
       pt={{
         header: {
           className: "p-0",

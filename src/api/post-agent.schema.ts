@@ -19,7 +19,7 @@ export const PostAgentResponse = z.object({
     agent: Agent,
     contract: Contract.deepPartial(),
     faction: Faction,
-    ship: Ship.deepPartial(),
+    ship: Ship,
     token: z.string(),
   }),
 });

@@ -135,3 +135,4 @@ export const Ship = z.object({
     }),
   }),
 });
+export type TShip = z.infer<typeof Ship>;
