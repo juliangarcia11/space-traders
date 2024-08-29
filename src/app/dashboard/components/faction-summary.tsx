@@ -17,7 +17,7 @@ export function FactionSummary({ faction }: { faction: TFaction }) {
         <FactionTraits traits={faction.traits} />
         <WaypointLink
           waypoint={faction.headquarters}
-          tooltip="Show headquarters on the map"
+          tooltip="Show faction headquarters on the map"
         />
       </div>
     </div>

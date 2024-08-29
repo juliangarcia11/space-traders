@@ -26,7 +26,11 @@ export const FactionSummaryStory: Story = {
       canvas.getByText(PostAgentResponse200.data.faction.description),
     ).toBeVisible();
     await expect(canvas.getAllByTestId("faction-trait")).toBeTruthy();
-    await expect(canvas.getByTestId("faction-waypoint-link")).toBeVisible();
+    await expect(
+      canvas.getByTestId(
+        `waypoint-link-${PostAgentResponse200.data.faction.headquarters}`,
+      ),
+    ).toBeVisible();
   },
 };
 
@@ -45,6 +49,10 @@ export const FactionSummaryClosedStory: Story = {
       canvas.getByText(PostAgentResponse200.data.faction.description),
     ).toBeVisible();
     await expect(canvas.getAllByTestId("faction-trait")).toBeTruthy();
-    await expect(canvas.getByTestId("faction-waypoint-link")).toBeVisible();
+    await expect(
+      canvas.getByTestId(
+        `waypoint-link-${PostAgentResponse200.data.faction.headquarters}`,
+      ),
+    ).toBeVisible();
   },
 };

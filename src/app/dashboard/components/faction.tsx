@@ -21,6 +21,7 @@ export function Faction({ faction }: { faction: TFaction }) {
         severity="secondary"
         icon={isVisible ? "pi pi-chevron-down" : "pi pi-chevron-left"}
         iconPos="right"
+        size="small"
         text
         onClick={(e) => {
           setIsVisible(!isVisible);

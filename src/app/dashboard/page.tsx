@@ -3,7 +3,6 @@ import {
   getContracts,
   getFaction,
   PostAgentResponse200,
-  type TContract,
   type TPostAgentResponse,
 } from "~/api";
 

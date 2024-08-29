@@ -21,6 +21,7 @@ export const AgentSummaryStory: Story = {
     const canvas = within(canvasElement);
 
     await canvas.findByTestId("agent-summary");
+    await canvas.findByTestId("agent-credits");
     await canvas.findByTestId("faction");
   },
 };

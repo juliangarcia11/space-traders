@@ -24,6 +24,7 @@ export function WaypointLink({
         size="small"
         text
         tooltip={tooltip}
+        tooltipOptions={{ position: "left" }}
       />
     </Link>
   );
