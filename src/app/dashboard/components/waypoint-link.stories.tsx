@@ -1,26 +1,24 @@
-import { FactionWaypointLink } from "~/app/dashboard/components/faction-waypoint-link";
+import { WaypointLink } from "~/app/dashboard/components/waypoint-link";
 import { type Meta, type StoryObj } from "@storybook/react";
 
 import { within, expect } from "@storybook/test";
 
-const meta: Meta<typeof FactionWaypointLink> = {
-  title: "Pages/Dashboard Page/Faction Waypoint Link",
-  component: FactionWaypointLink,
+const meta: Meta<typeof WaypointLink> = {
+  title: "Pages/Dashboard Page/Waypoint Link",
+  component: WaypointLink,
 };
 
 export default meta;
-type Story = StoryObj<typeof FactionWaypointLink>;
+type Story = StoryObj<typeof WaypointLink>;
 
-export const FactionWaypointLinkStory: Story = {
+export const WaypointLinkStory: Story = {
   name: "Default",
   args: {
     waypoint: "X-123",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(
-      canvas.getByTestId("faction-waypoint-link"),
-    ).toBeInTheDocument();
+    await expect(canvas.getByTestId("waypoint-link-X-123")).toBeInTheDocument();
     await expect(canvas.getByText("X-123")).toBeInTheDocument();
     await expect(canvas.getByRole("link")).toHaveAttribute(
       "href",
