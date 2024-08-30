@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from "@storybook/react";
 import { within, expect } from "@storybook/test";
 
 const meta: Meta<typeof ShipCargoSummary> = {
-  title: "Pages/Dashboard Page/ShipCargoSummary",
+  title: "Pages/Dashboard Page/Ship Cargo Summary",
   component: ShipCargoSummary,
 };
 

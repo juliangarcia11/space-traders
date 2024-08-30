@@ -1,8 +1,8 @@
 import { JoinDialogForm } from "./form";
 import { type Meta, type StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
-import { http, HttpResponse } from "msw";
-import { api_urls, MockPostAgentResponse } from "~/api";
+import { http } from "msw";
+import { api_urls } from "~/api";
 import { cookies } from "@storybook/nextjs/headers.mock";
 
 const meta: Meta<typeof JoinDialogForm> = {
