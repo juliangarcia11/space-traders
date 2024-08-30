@@ -2,18 +2,15 @@ import { type TContract } from "~/api";
 import { Tag } from "primereact/tag";
 import { Tooltip } from "primereact/tooltip";
 import { calculateAcceptance } from "~/app/dashboard/utils/calculate-acceptance";
-
-type ContractAcceptanceStatusProps = Pick<
-  TContract,
-  "accepted" | "fulfilled" | "expiration" | "deadlineToAccept"
->;
+import { formatDate } from "~/app/dashboard/utils/date-formatting";
 
 export function ContractAcceptanceStatus({
+  id,
   accepted,
   fulfilled,
   expiration,
   deadlineToAccept,
-}: ContractAcceptanceStatusProps) {
+}: TContract) {
   const isExpired = new Date(expiration) < new Date();
 
   const label = calculateAcceptance({
@@ -40,10 +37,10 @@ export function ContractAcceptanceStatus({
     isAccepted: accepted,
     isFulfilled: fulfilled,
     isExpired,
-    acceptedMsg: `Expires on ${expiration}`,
+    acceptedMsg: `Expires on ${formatDate(expiration)}`,
     fulfilledMsg: "",
-    expiredMsg: `Expired on ${expiration}`,
-    defaultMsg: `Deadline to accept is ${deadlineToAccept}`,
+    expiredMsg: `Expired on ${formatDate(expiration)}`,
+    defaultMsg: `Deadline to accept is ${formatDate(deadlineToAccept)}`,
   });
 
   const severity = calculateAcceptance({
@@ -58,12 +55,16 @@ export function ContractAcceptanceStatus({
 
   return (
     <>
-      <Tooltip content={tooltip} target=".acceptance-status" position="top" />
+      <Tooltip
+        content={tooltip}
+        target={`.acceptance-status-${id}`}
+        position="top"
+      />
       <Tag
         value={label}
         icon={`pi ${icon}`}
         severity={severity}
-        className="acceptance-status ml-auto h-fit"
+        className={`acceptance-status-${id} ml-auto h-fit`}
         data-testid="acceptance-status"
       />
     </>

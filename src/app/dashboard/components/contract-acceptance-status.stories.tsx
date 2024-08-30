@@ -11,10 +11,11 @@ export default meta;
 type Story = StoryObj<typeof ContractAcceptanceStatus>;
 
 const defaultArgs = {
+  id: "default",
   accepted: false,
   fulfilled: false,
   // far future
-  expiration: "2500-11-10",
+  expiration: "2500-09-06T20:29:58.291Z",
   // one day from now
   deadlineToAccept: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
 };
@@ -40,6 +41,7 @@ export const AcceptedStatusStory: Story = {
   name: "Accepted",
   args: {
     ...defaultArgs,
+    id: "accepted",
     accepted: true,
   },
   play: async ({ canvasElement }) => {
@@ -57,6 +59,7 @@ export const FulfilledStatusStory: Story = {
   name: "Fulfilled",
   args: {
     ...defaultArgs,
+    id: "fulfilled",
     accepted: true,
     fulfilled: true,
   },
@@ -75,8 +78,9 @@ export const ExpiredStatusStory: Story = {
   name: "Expired",
   args: {
     ...defaultArgs,
-    expiration: "2021-10-10",
-    deadlineToAccept: "2021-10-10",
+    id: "expired",
+    expiration: "2020-09-06T20:29:58.291Z",
+    deadlineToAccept: "2020-09-06T20:29:58.291Z",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

@@ -20,6 +20,7 @@ export const ContractSummaryStory: Story = {
   args: {
     contract: {
       ...defaultArgs.contract,
+      id: "summary",
       accepted: false,
     },
   },
@@ -38,6 +39,7 @@ export const ContractSummaryStoryAccepted: Story = {
   args: {
     contract: {
       ...defaultArgs.contract,
+      id: "accepted",
       accepted: true,
     },
   },
@@ -49,6 +51,7 @@ export const ContractSummaryStoryFulfilled: Story = {
   args: {
     contract: {
       ...defaultArgs.contract,
+      id: "fulfilled",
       accepted: true,
       fulfilled: true,
     },
@@ -61,6 +64,7 @@ export const ContractSummaryStoryExpired: Story = {
   args: {
     contract: {
       ...defaultArgs.contract,
+      id: "expired",
       expiration: "2021-01-01",
     },
   },
