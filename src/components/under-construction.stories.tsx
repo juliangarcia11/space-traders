@@ -20,7 +20,7 @@ export const UnderConstructionStory: Story = {
     await expect(title).toBeInTheDocument();
 
     const message = await canvas.findByText(
-      "This area is currently under construction.",
+      "This feature is under construction.",
     );
     await expect(message).toBeInTheDocument();
   },
@@ -37,7 +37,7 @@ export const CustomTitle: Story = {
     await expect(title).toBeInTheDocument();
 
     const message = await canvas.findByText(
-      "This area is currently under construction.",
+      "This feature is under construction.",
     );
     await expect(message).toBeInTheDocument();
   },
