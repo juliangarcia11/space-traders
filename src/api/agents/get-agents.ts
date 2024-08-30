@@ -6,7 +6,7 @@ import {
   type TApiError,
 } from "~/api/_utils";
 import { api_urls } from "~/api/_urls";
-import { GetAgentsResponse } from "~/api/get-agents.schema";
+import { GetAgentsResponse } from "~/api/agents/get-agents.schema";
 
 /**
  * Get all agents using pagination

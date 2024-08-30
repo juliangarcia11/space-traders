@@ -1,5 +1,12 @@
 import { z } from "zod";
-import { Agent, AgentSymbol, Contract, Faction, Factions, Ship } from "./";
+import {
+  Agent,
+  AgentSymbol,
+  Contract,
+  Faction,
+  Factions,
+  Ship,
+} from "../index";
 
 export const PostAgentRequest = z.object({
   email: z

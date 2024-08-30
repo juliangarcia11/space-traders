@@ -6,7 +6,7 @@ import {
   type TApiError,
 } from "~/api/_utils";
 import { api_urls } from "~/api/_urls";
-import { GetAgentResponse } from "~/api/get-agent.schema";
+import { GetAgentResponse } from "~/api/agents/get-agent.schema";
 
 /**
  * Get an agent by their username (Agent.symbol) or the current agent if no username is provided
