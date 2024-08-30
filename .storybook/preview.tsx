@@ -62,7 +62,7 @@ const preview: Preview = {
     options: {
       storySort: {
         method: "alphabetical",
-        order: ["Pages", "*"],
+        order: ["Pages", ["Dashboard Page", ["Page", "*"], "*"], "*"],
         locales: "",
       },
     },

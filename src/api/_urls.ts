@@ -21,4 +21,9 @@ export const api_urls = {
     `${API_BASE}my/contracts/${contractId}/fulfill`,
   get_faction: (factionId: string) => `${API_BASE}factions/${factionId}`,
   get_factions: `${API_BASE}factions`,
+
+  fleet: {
+    get_my_ships: `${API_BASE}my/ships`,
+    get_my_ship: (shipId: string) => `${API_BASE}my/ships/${shipId}`,
+  },
 };

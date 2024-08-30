@@ -3,9 +3,9 @@ import {
   api_urls,
   MockGetAgentResponse,
   MockGetContractsResponse,
+  MockGetShipsResponse,
   MockGetStatusResponse,
   MockPostAgentResponse,
-  okResponse,
 } from "~/api";
 
 type MswParameter = {
@@ -47,5 +47,10 @@ export const mswHandlers: MswParameter["handlers"] = {
         return HttpResponse.json({ data: MockPostAgentResponse.data.faction });
       },
     ),
+  ],
+  fleet: [
+    http.get(api_urls.fleet.get_my_ships, () => {
+      return HttpResponse.json(MockGetShipsResponse);
+    }),
   ],
 };

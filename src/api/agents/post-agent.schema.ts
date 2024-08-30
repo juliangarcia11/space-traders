@@ -140,7 +140,7 @@ export const MockPostAgentResponse: TPostAgentResponse = {
         wages: 1000,
       },
       frame: {
-        symbol: "FRAME_SYMBOL",
+        symbol: "FRAME_PROBE",
         name: "Frame Name",
         description: "Frame Description",
         condition: 100,

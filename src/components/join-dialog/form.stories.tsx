@@ -3,6 +3,7 @@ import { type Meta, type StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
 import { http, HttpResponse } from "msw";
 import { api_urls, MockPostAgentResponse } from "~/api";
+import { cookies } from "@storybook/nextjs/headers.mock";
 
 const meta: Meta<typeof JoinDialogForm> = {
   title: "Components/JoinDialog/Form",
@@ -15,14 +16,9 @@ type Story = StoryObj<typeof JoinDialogForm>;
 
 export const JoinDialogFormStory: Story = {
   name: "Default",
-  parameters: {
-    msw: {
-      handlers: [
-        http.post(api_urls.register, () =>
-          HttpResponse.json(MockPostAgentResponse),
-        ),
-      ],
-    },
+  async beforeEach() {
+    // 👇 Set mock cookies and headers ahead of rendering
+    cookies().clear();
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
