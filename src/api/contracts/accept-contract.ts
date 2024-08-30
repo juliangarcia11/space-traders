@@ -13,7 +13,7 @@ import { api_urls } from "~/api/_urls";
  * Accept a contract
  */
 export async function acceptContract(contractId: string) {
-  const url = api_urls.accept_contract(contractId);
+  const url = api_urls.contracts.accept_contract(contractId);
   const response = await fetch(url, await requestOptions({ method: "POST" }));
 
   // Check if the response from the SpaceTraders API is ok

@@ -44,7 +44,7 @@ export async function deliverContract(
 
   // Send the form data to the SpaceTraders API
   const response = await fetch(
-    api_urls.deliver_contract(contractId),
+    api_urls.contracts.deliver_contract(contractId),
     await requestOptions({
       method: "POST",
       body: JSON.stringify(parsedFormData.data),

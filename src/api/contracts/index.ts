@@ -8,3 +8,5 @@ export * from "./get-contract";
 export * from "./get-contract.schema";
 export * from "./get-contracts";
 export * from "./get-contracts.schema";
+export * from "./negotiate-contract";
+export * from "./negotiate-contract.schema";

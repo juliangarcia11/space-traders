@@ -5,6 +5,7 @@ import {
   MockGetContractsResponse,
   MockGetShipsResponse,
   MockGetStatusResponse,
+  MockNegotiateContractResponse,
   MockPostAgentResponse,
 } from "~/api";
 
@@ -36,8 +37,11 @@ export const mswHandlers: MswParameter["handlers"] = {
     }),
   ],
   contracts: [
-    http.get(api_urls.get_contracts, () => {
+    http.get(api_urls.contracts.get_contracts, () => {
       return HttpResponse.json(MockGetContractsResponse);
+    }),
+    http.post(api_urls.contracts.negotiate_contract(":shipId"), () => {
+      return HttpResponse.json(MockNegotiateContractResponse);
     }),
   ],
   factions: [

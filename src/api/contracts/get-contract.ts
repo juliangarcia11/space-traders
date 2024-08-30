@@ -14,7 +14,7 @@ import { GetContractSchema } from "~/api/contracts/get-contract.schema";
  * Get a contract by its ID
  */
 export async function getContract(contractId: string) {
-  const url = api_urls.get_contract(contractId);
+  const url = api_urls.contracts.get_contract(contractId);
 
   const response = await fetch(url, await requestOptions());
 
