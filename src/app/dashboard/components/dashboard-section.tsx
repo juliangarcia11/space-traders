@@ -21,7 +21,7 @@ export function DashboardSection({
   return (
     <Card
       header={
-        <h2 className="p-4 pb-0 text-2xl font-bold md:pl-6 md:pt-6">{title}</h2>
+        <h2 className="p-4 pb-0 text-2xl font-bold lg:pl-6 lg:pt-6">{title}</h2>
       }
       data-testid={dataTestId}
       pt={{

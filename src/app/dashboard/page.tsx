@@ -30,13 +30,13 @@ export default async function DashboardPage() {
 
   return (
     <div className="my-4 grid grid-cols-12 gap-4">
-      <div className="col-span-4">
+      <div className="col-span-12 md:col-span-6 lg:col-span-4">
         <Contracts contracts={contracts.data.data} />
       </div>
-      <div className="col-span-5">
+      <div className="col-span-12 md:col-span-6 lg:col-span-5">
         <Ships ships={[response.data.ship]} />
       </div>
-      <div className="col-span-3">
+      <div className="col-span-12 lg:col-span-3">
         <AgentSummary agent={agent.data} faction={faction.data} />
       </div>
     </div>

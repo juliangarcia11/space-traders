@@ -5,8 +5,10 @@ import { UnderConstruction } from "~/components";
 export function Ships({ ships: _ }: { ships: TShip[] }) {
   return (
     <DashboardSection title="Ships" dataTestId="ships">
-      <UnderConstruction />
-      {/*<pre>{JSON.stringify(ships, null, 2)}</pre>*/}
+      <div className="flex justify-center">
+        <UnderConstruction />
+        {/*<pre>{JSON.stringify(ships, null, 2)}</pre>*/}
+      </div>
     </DashboardSection>
   );
 }

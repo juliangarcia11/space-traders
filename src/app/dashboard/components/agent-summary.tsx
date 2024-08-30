@@ -18,15 +18,15 @@ export function AgentSummary({
 }) {
   return (
     <DashboardSection title={agent.symbol} dataTestId="agent-summary">
-      <div className="flex flex-row justify-between gap-2">
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-2 lg:gap-4">
         <AgentCredits credits={agent.credits} />
         <WaypointLink
           waypoint={agent.headquarters}
           tooltip="Show agent headquarters on map"
         />
-      </div>
-      <div className="flex flex-row items-center justify-end">
-        <Faction faction={faction} />
+        <span className="col-start-2 md:col-start-auto lg:col-start-2">
+          <Faction faction={faction} />
+        </span>
       </div>
     </DashboardSection>
   );

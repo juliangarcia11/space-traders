@@ -11,6 +11,7 @@ export function AgentCredits({ credits }: { credits: number }) {
       tooltip="Credits (earned through contract fulfillments)"
       tooltipOptions={{ position: "left" }}
       data-testid="agent-credits"
+      className="w-fit"
     />
   );
 }
