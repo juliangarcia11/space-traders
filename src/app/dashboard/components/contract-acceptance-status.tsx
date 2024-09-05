@@ -30,7 +30,7 @@ export function ContractAcceptanceStatus({
     acceptedMsg: "pi-clock",
     fulfilledMsg: "pi-check",
     expiredMsg: "pi-times",
-    defaultMsg: "",
+    defaultMsg: "pi-clipboard",
   });
 
   const tooltip = calculateAcceptance({
@@ -66,6 +66,14 @@ export function ContractAcceptanceStatus({
         severity={severity}
         className={`acceptance-status-${id} ml-auto h-fit`}
         data-testid="acceptance-status"
+        pt={{
+          value: {
+            className: "hidden md:block ",
+          },
+          icon: {
+            className: "ml-1 md:ml-0",
+          },
+        }}
       />
     </>
   );
