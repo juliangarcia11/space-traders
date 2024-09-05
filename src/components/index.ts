@@ -1,5 +1,6 @@
 export * from "./announcements";
 export * from "./auth-required-layout";
+export * from "./button-menu";
 export * from "./dark-mode-toggle";
 export * from "./join-dialog";
 export * from "./leaderboards";
