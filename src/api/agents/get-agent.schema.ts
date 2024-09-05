@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Agent } from "../_base";
+import { Agent } from "~/api";
 
 export const GetAgentResponse = z.object({
   data: Agent,

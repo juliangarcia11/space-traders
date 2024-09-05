@@ -1,37 +1,9 @@
 "use server";
 
-import {
-  api_urls,
-  notOkResponse,
-  okResponse,
-  requestOptions,
-  type TApiError,
-} from "~/api";
-import { GetFactionResponse } from "~/api/factions/get-faction.schema";
+import { api_urls, fetchAndParse, GetFactionResponse } from "~/api";
 
 export async function getFaction(factionId: string) {
-  const response = await fetch(
-    api_urls.get_faction(factionId),
-    await requestOptions(),
-  );
-
-  // Check if the response from the SpaceTraders API is ok
-  if (!response.ok) {
-    const json = (await response.json()) as TApiError;
-    return notOkResponse(response, json.error.message, "getFaction");
-  }
-
-  // Parse the response from the SpaceTraders API to get proper typings
-  const parsedResponse = GetFactionResponse.safeParse(await response.json());
-
-  if (!parsedResponse.success) {
-    return notOkResponse(
-      response,
-      "Unable to parse response: " + parsedResponse.error.message,
-      "getFaction",
-    );
-  }
-
-  // unpack the response from the SpaceTraders API and return it to the client
-  return okResponse(parsedResponse.data.data);
+  const url = api_urls.get_faction(factionId);
+  const response = await fetchAndParse(url, GetFactionResponse, "getFaction");
+  return response.data.data;
 }
