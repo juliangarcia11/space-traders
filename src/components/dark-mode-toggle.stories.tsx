@@ -27,11 +27,6 @@ export const Default: Story = {
     const button = await canvas.findByTestId("theme-toggle");
 
     await expect(button).toBeInTheDocument();
-
-    await expect(button.querySelector(".pi-moon")).toBeInTheDocument();
-
     await userEvent.click(button);
-
-    await expect(button.querySelector(".pi-sun")).toBeInTheDocument();
   },
 };

@@ -9,10 +9,10 @@ import { mswHandlers } from "./msw-handlers";
 import "../src/styles/globals.css";
 import "primeicons/primeicons.css";
 import Tailwind from "primereact/passthrough/tailwind";
-import { ThemeProvider } from "~/providers/theme";
 import { PrimeReactProvider } from "primereact/api";
 
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
   subsets: ["latin"],
@@ -29,7 +29,7 @@ initialize();
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <ThemeProvider>
+      <ThemeProvider attribute="class">
         <PrimeReactProvider value={{ unstyled: true, pt: Tailwind }}>
           <Suspense fallback="Loading...">
             <div className={`mx-auto w-fit ${inter.className}`}>

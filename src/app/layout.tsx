@@ -5,10 +5,10 @@ import "primeicons/primeicons.css";
 import Tailwind from "primereact/passthrough/tailwind";
 
 import { type Metadata } from "next";
-import { ThemeProvider } from "~/providers/theme";
 import { PageHeader } from "~/components/page-header";
 
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
   subsets: ["latin"],
@@ -25,9 +25,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html suppressHydrationWarning lang="en" className={inter.className}>
       <body className="overflow-none h-screen bg-slate-100 dark:bg-slate-800 dark:text-white">
-        <ThemeProvider>
+        <ThemeProvider attribute="class">
           <PrimeReactProvider value={{ unstyled: true, pt: Tailwind }}>
             <PageHeader />
             <main className="overflow-auto p-2" style={{ height: "90%" }}>
