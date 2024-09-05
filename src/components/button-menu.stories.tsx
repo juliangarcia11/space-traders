@@ -34,7 +34,12 @@ const defaultItems: MenuItem[] = [
 
 export const ButtonMenuStory: Story = {
   name: "Default",
-  args: { label: "Menu", icon: "pi pi-thumbs-up", items: defaultItems },
+  args: {
+    label: "Menu",
+    icon: "pi pi-thumbs-up",
+    items: defaultItems,
+    appendTo: "self",
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const buttonMenu = await canvas.findByTestId("button-menu");
@@ -52,6 +57,7 @@ export const StyledButtonMenuStory: Story = {
     items: defaultItems,
     severity: "success",
     size: "small",
+    appendTo: "self",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

@@ -12,6 +12,7 @@ type OmittedButtonProps = Omit<
 type ButtonMenuProps = OmittedButtonProps & {
   key: string;
   items: MenuItem[];
+  appendTo?: "self" | undefined;
 };
 
 /**
@@ -22,9 +23,15 @@ type ButtonMenuProps = OmittedButtonProps & {
  * @param key - A unique key for the button menu
  * @param items - The menu items to display
  * @param buttonProps - The props to pass to the button (icon, label, etc.)
+ * @param appendTo - The element to append the menu to (used in storybook)
  * @constructor
  */
-export function ButtonMenu({ key, items, ...buttonProps }: ButtonMenuProps) {
+export function ButtonMenu({
+  key,
+  items,
+  appendTo,
+  ...buttonProps
+}: ButtonMenuProps) {
   const menu = useRef<Menu>(null);
 
   return (
@@ -34,10 +41,11 @@ export function ButtonMenu({ key, items, ...buttonProps }: ButtonMenuProps) {
         popup
         ref={menu}
         id={`button_menu_${key}`}
-        appendTo="self"
+        appendTo={appendTo}
       />
       <Button
         {...buttonProps}
+        type={buttonProps.type ?? "button"}
         onClick={(event) => menu.current?.toggle(event)}
         aria-controls={`button_menu_${key}`}
         aria-haspopup
