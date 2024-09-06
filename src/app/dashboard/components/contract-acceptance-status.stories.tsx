@@ -29,7 +29,7 @@ export const AcceptanceStatusDefaultStory: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await canvas.findByText("Not Accepted");
+    await canvas.findByLabelText("Not Accepted");
     await canvas.findByTestId("acceptance-status");
   },
 };
@@ -47,7 +47,7 @@ export const AcceptedStatusStory: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await canvas.findByText("Accepted");
+    await canvas.findByLabelText("Accepted");
     await canvas.findByTestId("acceptance-status");
   },
 };
@@ -66,7 +66,7 @@ export const FulfilledStatusStory: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await canvas.findByText("Fulfilled");
+    await canvas.findByLabelText("Fulfilled");
     await canvas.findByTestId("acceptance-status");
   },
 };
@@ -85,7 +85,7 @@ export const ExpiredStatusStory: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await canvas.findByText("Expired");
+    await canvas.findByLabelText("Expired");
     await canvas.findByTestId("acceptance-status");
   },
 };

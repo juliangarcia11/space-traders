@@ -3,6 +3,7 @@ import { ContractAcceptanceStatus } from "~/app/dashboard/components/contract-ac
 import { ContractTypeIcon } from "~/app/dashboard/components/contract-type-icon";
 import { ContractTitle } from "~/app/dashboard/components/contract-title";
 import { calculateAcceptance } from "~/app/dashboard/utils/calculate-acceptance";
+import { ContractDestinationLink } from "~/app/dashboard/components/contract-destination-link";
 
 export function ContractSummary({ contract }: { contract: TContract }) {
   const border = calculateAcceptance({
@@ -24,13 +25,17 @@ export function ContractSummary({ contract }: { contract: TContract }) {
     defaultMsg:
       "bg-gray-50 hover:bg-gray-50/50 dark:bg-white/5 dark:hover:bg-white/10",
   });
+
   return (
     <div
       className={`${border} ${background} my-2 flex flex-row gap-2 rounded-xl border p-4 shadow-md transition duration-300 ease-in-out hover:shadow-lg md:gap-4`}
     >
       <ContractTypeIcon type={contract.type} />
       <ContractTitle {...contract} />
-      <ContractAcceptanceStatus {...contract} />
+      <div className="flex flex-col items-end gap-1">
+        <ContractDestinationLink {...contract} />
+        <ContractAcceptanceStatus {...contract} />
+      </div>
     </div>
   );
 }
