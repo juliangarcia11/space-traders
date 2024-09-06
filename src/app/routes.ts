@@ -11,7 +11,7 @@ type RoutingItem = Omit<MenuItem, "data"> & {
 /**
  * A list of all the routes in the app.
  */
-export const ROUTES = {
+export const ROUTES: Record<string, RoutingItem> = {
   HOME: {
     label: "Home",
     icon: "pi pi-home",
