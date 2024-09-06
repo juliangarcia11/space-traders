@@ -9,7 +9,7 @@ export function ContractSummary({ contract }: { contract: TContract }) {
   const border = calculateAcceptance({
     isAccepted: contract.accepted,
     isFulfilled: contract.fulfilled,
-    isExpired: new Date(contract.expiration) < new Date(),
+    isExpired: new Date(contract.terms.deadline) < new Date(),
     acceptedMsg: "border-blue-500",
     fulfilledMsg: "border-green-500",
     expiredMsg: "border-red-500",
@@ -18,7 +18,7 @@ export function ContractSummary({ contract }: { contract: TContract }) {
   const background = calculateAcceptance({
     isAccepted: contract.accepted,
     isFulfilled: contract.fulfilled,
-    isExpired: new Date(contract.expiration) < new Date(),
+    isExpired: new Date(contract.terms.deadline) < new Date(),
     acceptedMsg: "bg-blue-50 dark:bg-blue-900",
     fulfilledMsg: "bg-green-50 dark:bg-green-900",
     expiredMsg: "bg-red-50 dark:bg-red-900",

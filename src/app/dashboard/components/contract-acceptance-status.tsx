@@ -8,10 +8,10 @@ export function ContractAcceptanceStatus({
   id,
   accepted,
   fulfilled,
-  expiration,
+  terms,
   deadlineToAccept,
 }: TContract) {
-  const isExpired = new Date(expiration) < new Date();
+  const isExpired = new Date(terms.deadline) < new Date();
 
   const label = calculateAcceptance({
     isAccepted: accepted,
@@ -37,9 +37,9 @@ export function ContractAcceptanceStatus({
     isAccepted: accepted,
     isFulfilled: fulfilled,
     isExpired,
-    acceptedMsg: `Expires on ${formatDate(expiration)}`,
+    acceptedMsg: `Expires on ${formatDate(terms.deadline)}`,
     fulfilledMsg: "",
-    expiredMsg: `Expired on ${formatDate(expiration)}`,
+    expiredMsg: `Expired on ${formatDate(terms.deadline)}`,
     defaultMsg: `Deadline to accept is ${formatDate(deadlineToAccept)}`,
   });
 

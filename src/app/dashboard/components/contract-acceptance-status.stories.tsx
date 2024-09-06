@@ -1,6 +1,7 @@
 import { ContractAcceptanceStatus } from "~/app/dashboard/components/contract-acceptance-status";
 import { type Meta, type StoryObj } from "@storybook/react";
 import { within } from "@storybook/test";
+import { type TContractTerms } from "~/api";
 
 const meta: Meta<typeof ContractAcceptanceStatus> = {
   title: "Pages/Dashboard Page/Contract Acceptance Status",
@@ -14,8 +15,10 @@ const defaultArgs = {
   id: "default",
   accepted: false,
   fulfilled: false,
-  // far future
-  expiration: "2500-09-06T20:29:58.291Z",
+  terms: {
+    // far future
+    deadline: "2500-09-06T20:29:58.291Z",
+  } as TContractTerms,
   // one day from now
   deadlineToAccept: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
 };
@@ -79,8 +82,10 @@ export const ExpiredStatusStory: Story = {
   args: {
     ...defaultArgs,
     id: "expired",
-    expiration: "2020-09-06T20:29:58.291Z",
     deadlineToAccept: "2020-09-06T20:29:58.291Z",
+    terms: {
+      deadline: "2020-09-06T20:29:58.291Z",
+    } as TContractTerms,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
