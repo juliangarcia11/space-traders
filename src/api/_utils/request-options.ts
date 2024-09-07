@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { api_urls } from "~/api";
+import { env } from "~/env";
 
 /**
  * Get the request options for the SpaceTraders API.
@@ -18,6 +19,8 @@ export async function requestOptions(options?: Partial<RequestInit>) {
     throw new UnauthorizedError("No auth token found");
   }
 
+  // apply options gracefully so they add the auth headers
+  // but can still be customized per request
   return {
     ...options,
     headers: {
@@ -26,6 +29,13 @@ export async function requestOptions(options?: Partial<RequestInit>) {
         ? authCookie
         : `Bearer ${authCookie}`,
       ...options?.headers,
+    },
+    next: {
+      // revalidate every 5 minutes in development/testing,
+      // otherwise use the default allowed by SpaceTraders API
+      revalidate:
+        env.NODE_ENV !== "production" ? 300 : (options?.next?.revalidate ?? 2),
+      ...options?.next,
     },
   };
 }
