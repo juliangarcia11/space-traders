@@ -2,7 +2,6 @@
 
 import { cookies } from "next/headers";
 import { api_urls } from "~/api";
-import { env } from "~/env";
 
 /**
  * Get the request options for the SpaceTraders API.
@@ -34,7 +33,9 @@ export async function requestOptions(options?: Partial<RequestInit>) {
       // revalidate every 5 minutes in development/testing,
       // otherwise use the default allowed by SpaceTraders API
       revalidate:
-        env.NODE_ENV !== "production" ? 300 : (options?.next?.revalidate ?? 2),
+        process.env.NODE_ENV === "production"
+          ? (options?.next?.revalidate ?? 2)
+          : 300,
       ...options?.next,
     },
   };
